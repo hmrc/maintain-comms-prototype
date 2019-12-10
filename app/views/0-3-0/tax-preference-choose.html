@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Tax reminder preferences
+{% endblock %}
+
+{% block beforeContent %}
+{% include "./includes/phase.html" %}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+    <form class="form" action="tax-preference" method="post">
+    <!-- <form method="post" class="form"> -->
+
+    {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+
+
+    {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  idPrefix: "sign-in",
+  name: "sign-in",
+  fieldset: {
+    legend: {
+      text: "What preferences do you want to change?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--xl"
+    }
+  },
+  hint: {
+    text: ""
+  },
+  items: [
+    {
+      value: "government-gateway",
+      text: "All taxes",
+      label: {
+        classes: "govuk-label--s"
+      },
+      hint: {
+        text: "Have the same preference for all taxes"
+      }
+    },
+    {
+      value: "govuk-verify",
+      text: "Individual taxes",
+      label: {
+        classes: "govuk-label--s"
+      },
+      hint: {
+        text: "Choose different preferences for each tax"
+      }
+    }
+  ]
+}) }}
+
+
+
+
+
+
+
+
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+    {{ govukButton({
+      text: "Update preferences"
+    }) }}
+
+
+    </form>
+  </div>
+</div>
+
+
+
+
+
+  {% endblock %}

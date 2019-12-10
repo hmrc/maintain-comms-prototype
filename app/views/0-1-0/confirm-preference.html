@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Confirm the contact preference for Corporation Tax
+{% endblock %}
+
+{% block beforeContent %}
+{% include "./includes/phase.html" %}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+<form class="form" action="confirmation-update-preference" method="post">
+  <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+        Confirm the contact preference for VAT
+      </h1>
+    </legend>
+
+        <p>
+          We will contact you about your VAT through {{data['emailAddress']}}.
+
+        </p>
+
+        <p><a href="./choose-preference-alt">Change the contact preference</a></p>
+
+
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+
+    </fieldset>
+  </div>
+
+        {{ govukButton({
+          text: "Confirm and continue"
+        }) }}
+
+
+      </form>
+
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}

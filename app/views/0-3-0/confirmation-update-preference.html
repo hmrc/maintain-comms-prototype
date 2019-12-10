@@ -1,0 +1,155 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Contact preference updated
+{% endblock %}
+
+{% block beforeContent %}
+{% include "./includes/phase.html" %}
+
+
+{% endblock %}
+
+{% block content %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+      {{ govukPanel({
+        titleText: "Contact preference updated",
+        html: " "
+      }) }}
+
+      <p class="govuk-body">We have sent you a confirmation email.</p>
+
+      <h2 class="govuk-heading-m">What happens next</h2>
+
+      <p class="govuk-body">
+        From now on you will receive letters for your VAT reminders to your primary address:
+        </p>
+        <p>30 Romford Road<br>TF1 4ER<br>
+        </p>
+
+
+        <!-- {% if (data['marketingPref'] == "Primary email address")  %}
+        <p class="govuk-body">
+          From now on you will receive marketing through your primary email address sales@abcdigital.com.
+          </p>
+
+        {% elseif (data['marketingPref'] == "letter") %}
+        <p class="govuk-body">
+          From now on you will receive letters for your marketing reminders, to your
+          </p>
+
+          <p class="govuk-body">
+            <strong>Primary address</strong><br>
+            30 Romford Road<br>TF1 4ER<br>
+            </p>
+
+          {% elseif (data['marketingPref'] == "SMS") %}
+          <p class="govuk-body">
+            From now on you will receive marketing reminders through SMS.
+            </p>
+        {% endif %}
+
+
+
+
+        {% if (data['ddPref'] == "Primary email address")  %}
+        <p class="govuk-body">
+          From now on you will receive Direct Debit information through your primary email address: sales@abcdigital.com.
+          </p>
+
+          {% elseif (data['ddPref'] == "Secondary email address")  %}
+          <p class="govuk-body">
+            From now on you will receive Direct Debit information through your secondary email address: john.b@abcdigital.com.
+            </p>
+
+        {% elseif (data['ddPref'] == "letter") %}
+        <p class="govuk-body">
+          From now on you will receive letters for your Direct Debit information, to your primary address:
+        </p>
+        <p>30 Romford Road<br>TF1 4ER<br>
+        </p>
+
+          {% elseif (data['ddPref'] == "SMS") %}
+          <p class="govuk-body">
+            From now on you will receive Direct Debit information through SMS.
+            </p>
+        {% endif %}
+
+
+
+        {% if (data['vatreminder'] == "Primary email address")  %}
+        <p class="govuk-body">
+          From now on you will receive VAT reminders through your primary email address: sales@abcdigital.com.
+          </p>
+
+          {% elseif (data['vatreminder'] == "Secondary email address")  %}
+          <p class="govuk-body">
+            From now on you will receive VAT reminders through your secondary email address: john.b@abcdigital.com.
+            </p>
+
+        {% elseif (data['vatreminder'] == "letter") %}
+        <p class="govuk-body">
+          From now on you will receive letters for your VAT reminders to your primary address:
+          </p>
+          <p>30 Romford Road<br>TF1 4ER<br>
+          </p>
+          <p class="govuk-body">
+            In some cases we'll need to send you letters because the law requires it.
+        </p>
+
+          {% elseif (data['vatreminder'] == "SMS") %}
+          <p class="govuk-body">
+            From now on you will receive VAT reminders through SMS.
+            </p>
+        {% endif %}
+
+
+
+        {% if (data['SAreminder'] == "Primary email address")  %}
+        <p class="govuk-body">
+          From now on you will receive self assessment reminders through your primary email address: sales@abcdigital.com.
+          </p>
+
+          {% elseif (data['SAreminder'] == "Secondary email address")  %}
+          <p class="govuk-body">
+            From now on you will receive self assessment reminders through your secondary email address: john.b@abcdigital.com.
+            </p>
+
+        {% elseif (data['SAreminder'] == "Letter") %}
+        <p class="govuk-body">
+          From now on you will receive letters for your self assessment reminders to your primary address:
+          </p>
+          <p>30 Romford Road<br>TF1 4ER<br>
+          </p>
+          <p class="govuk-body">
+            In some cases we'll need to send you letters because the law requires it.
+        </p>
+
+          {% elseif (data['SAreminder'] == "SMS") %}
+          <p class="govuk-body">
+            From now on you will receive self assessment reminders through SMS.
+            </p>
+        {% endif %} -->
+
+
+
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {{ govukButton({
+        text: "View your account details",
+        href: "account-details-alt",
+        isStartButton: false
+      }) }}
+
+    </div>
+  </div>
+{% endblock %}

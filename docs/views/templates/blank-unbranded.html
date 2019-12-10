@@ -1,0 +1,53 @@
+{% extends "layout_unbranded.html" %}
+
+{% block pageTitle %}
+  Example without branding
+{% endblock %}
+
+{% block content %}
+
+  <h1 class="govuk-heading-xl">
+    Example without GOV.UK branding
+  </h1>
+  <p class="govuk-body-l">
+    This page doesn't use New Transport or display the GOV.UK header and footer.
+  </p>
+
+
+      <div class="flex-container grid-row">
+        <div class="card" id="cardAmount">
+          <div class="card-body" style="border-bottom: 0px;">
+            <h2 class="govuk-heading-m" style="margin-top: 0px">Your contact details</h2>
+            <p>7 May 2019</p>
+            <p><a href="view-vat-payments">Check what you owe</a></p>
+              <!-- <div class="">You can check what you owe, make a payment, complete a return and view your payment history.</div> -->
+          </div>
+
+        </div>
+
+        <div class="card" id="cardAmount">
+          <div class="card-body" style="border-bottom: 0px;">
+            <h2 class="govuk-heading-m" style="margin-top: 0px">Your address book</h2>
+            <p>7 August 2019</p>
+            <p><a href="return-deadlines">View return deadlines</a></p>
+              <!-- <div class="">You can check what you owe, make a payment, complete a return and view your payment history.</div> -->
+          </div>
+
+        </div>
+
+        <div class="card" id="cardAmount">
+          <div class="card-body" style="border-bottom: 0px;">
+            <h2 class="govuk-heading-m" style="margin-top: 0px">Government Gateway details</h2>
+            <ul class="list">
+               <li><a href="payment-history.html">Payment history</a></li>
+               <li><a href="your-previous-returns.html">Submitted returns</a></li>
+             </ul>
+
+          </div>
+        </div>
+
+      </div>
+
+
+
+{% endblock %}

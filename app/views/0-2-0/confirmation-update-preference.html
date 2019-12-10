@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Contact preference updated
+{% endblock %}
+
+{% block beforeContent %}
+{% include "./includes/phase.html" %}
+
+
+{% endblock %}
+
+{% block content %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if (data['contactPref'] == "letter")  %}
+      {{ govukPanel({
+        titleText: "New contact preference for VAT",
+        html: " "
+      }) }}
+      {% else %}
+
+      {{ govukPanel({
+        titleText: "Contact preference updated",
+        html: " "
+      }) }}
+      {% endif %}
+
+      <p class="govuk-body">We have sent you a confirmation email.</p>
+
+      <h2 class="govuk-heading-m">What happens next</h2>
+
+
+
+        {% if (data['contactPref'] == "letter")  %}
+
+        <p class="govuk-body">
+          From now on you will receive letters for your VAT reminders, to your {{data['contactAddress']}}.
+          </p>
+
+          <p class="govuk-body">
+            <strong>Primary address</strong><br>
+            30 Romford Road<br>TF1 4ER<br>
+            </p>
+
+
+
+            {% else %}
+        <p class="govuk-body">
+          From now on you will receive reminders for your VAT to your {{data['contactPref']}}.
+          </p>
+          <p class="govuk-body">
+            In some cases we'll need to send you letters because the law requires it.
+        </p>
+
+        {% endif %}
+
+
+
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {{ govukButton({
+        text: "View your account details",
+        href: "./account-details",
+        isStartButton: false
+      }) }}
+
+    </div>
+  </div>
+{% endblock %}

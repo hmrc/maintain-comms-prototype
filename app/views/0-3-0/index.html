@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Maintain Preferences Index
+{% endblock %}
+
+{% block beforeContent %}
+
+{% include "./includes/phase.html" %}
+
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:history.back()"
+}) }}
+
+
+{% endblock %}
+
+{% block content %}
+
+<h1 class="govuk-heading-xl">
+  Maintain Preferences Contents page
+</h1>
+
+
+
+
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-one-half">
+
+    <h2 class="govuk-heading-m">Business Tax Account</h2>
+
+    <ul class="govuk-list govuk-list">
+      <li><a href="business-tax-account">BTA</a></li>
+      <li><a href="manage-account">Manage account</a></li>
+    </ul>
+
+    </div>
+
+    <div class="govuk-grid-column-one-half">
+
+      <h2 class="govuk-heading-m">Manage Preferences</h2>
+
+      <ul class="govuk-list govuk-list">
+        <li><a href="account-details">Account details</a></li>
+        <li><a href="preferences">Preferences</a></li>
+
+        <li><a href="account-details-alt">Account details alternative</a></li>
+        <li><a href="preferences-alt">Preferences alternative</a></li>
+
+      </ul>
+
+      </div>
+
+</div>
+
+
+
+
+{% endblock %}

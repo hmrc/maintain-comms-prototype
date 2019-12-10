@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Which tax would you like to add a contact preference to?
+{% endblock %}
+
+{% block beforeContent %}
+{% include ".././includes/phase.html" %}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="add-preference" method="post">
+    <!-- <form method="post" class="form"> -->
+
+    {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+    {{ govukRadios({
+      idPrefix: "addTax",
+      name: "addTax",
+      fieldset: {
+        legend: {
+          text: "Which tax would you like to add a contact preference to?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--xl"
+        }
+      },
+
+      items: [
+
+      {
+        value: "itsa",
+        text: "Income Tax"
+      },
+              {
+          value: "ct",
+          text: "Corporation Tax"
+        },
+
+        {
+    value: "vat",
+    text: "VAT"
+  },
+        {
+          value: "paye",
+          text: "PAYE"
+        }
+      ]
+    }) }}
+
+
+
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+
+    </form>
+  </div>
+</div>
+
+
+
+
+
+  {% endblock %}

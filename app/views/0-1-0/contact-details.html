@@ -1,0 +1,1096 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Contact details
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% include "./includes/phase.html" %}
+
+<a class="govuk-back-link" href="/url/of/previous/page">Back</a>
+
+{% endblock %}
+
+{% block content %}
+
+<main class="govuk-main-wrapper">
+
+  <div class="govuk-grid-row">
+
+    <h1 class="govuk-heading-xl">
+      Account details
+    </h1>
+
+
+
+
+    <div class="flex-container grid-row">
+      <div class="card" id="cardAmount">
+        <div class="card-body" style="border-bottom: 0px;">
+          <h2 class="govuk-heading-m" style="margin-top: 0px">Your contact details</h2>
+          <p>7 May 2019</p>
+          <p><a href="view-vat-payments">Check what you owe</a></p>
+            <!-- <div class="">You can check what you owe, make a payment, complete a return and view your payment history.</div> -->
+        </div>
+
+      </div>
+
+      <div class="card" id="cardAmount">
+        <div class="card-body" style="border-bottom: 0px;">
+          <h2 class="govuk-heading-m" style="margin-top: 0px">Your address book</h2>
+          <p>7 August 2019</p>
+          <p><a href="return-deadlines">View return deadlines</a></p>
+            <!-- <div class="">You can check what you owe, make a payment, complete a return and view your payment history.</div> -->
+        </div>
+
+      </div>
+
+      <div class="card" id="cardAmount">
+        <div class="card-body" style="border-bottom: 0px;">
+          <h2 class="govuk-heading-m" style="margin-top: 0px">Government Gateway details</h2>
+          <ul class="list">
+             <li><a href="payment-history.html">Payment history</a></li>
+             <li><a href="your-previous-returns.html">Submitted returns</a></li>
+           </ul>
+
+        </div>
+      </div>
+
+    </div>
+
+
+
+    {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+    <h2 class="govuk-heading-l">
+    Contact preferences
+  </h2>
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Name"
+          },
+          value: {
+            text: "Sarah Philips"
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "name"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Date of birth"
+          },
+          value: {
+            text: "5 January 1978"
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "date of birth"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Contact information"
+          },
+          value: {
+            html: "72 Guild Street<br>London<br>SE23 6FH"
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "contact information"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Contact details"
+          },
+          value: {
+            html: '<p class="govuk-body">07700 900457</p><p class="govuk-body">sarah.phillips@example.com</p>'
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "contact details"
+              }
+            ]
+          }
+        }
+      ]
+    }) }}
+
+
+    {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+    <h2 class="govuk-heading-l">
+    Address preferences
+  </h2>
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Name"
+          },
+          value: {
+            text: "Sarah Philips"
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "name"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Date of birth"
+          },
+          value: {
+            text: "5 January 1978"
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "date of birth"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Contact information"
+          },
+          value: {
+            html: "72 Guild Street<br>London<br>SE23 6FH"
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "contact information"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Contact details"
+          },
+          value: {
+            html: '<p class="govuk-body">07700 900457</p><p class="govuk-body">sarah.phillips@example.com</p>'
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "contact details"
+              }
+            ]
+          }
+        }
+      ]
+    }) }}
+
+
+    <div class="govuk-grid-column-full govuk-!-padding-left-0 govuk-!-padding-right-0 govuk-!-margin-bottom-4">
+
+
+
+      <!-- only add a heading for a list if there is more than one list -->
+        <h2 class="govuk-heading-l">
+        Contact preferences
+      </h2>
+
+      <!-- use additional modifier class to change column widths for multiple groups of questions and answers: -->
+      <!--   * `app-check-your-answers--short` for short questions -->
+      <!--   * `app-check-your-answers__questions-long` for long questions -->
+      <!--   * none for single group of q&a -->
+      <dl class="app-check-your-answers app-check-your-answers--short govuk-summary-list govuk-!-margin-bottom-7">
+        <div class="app-check-your-answers__contents">
+          <dt class="app-check-your-answers__question">
+            Business name
+          </dt>
+          <dd class="app-check-your-answers__answer">
+            ABC Digital Solutions
+          </dd>
+          <dd class="app-check-your-answers__change">
+
+
+
+
+          </dd>
+        </div>
+
+
+        <div class="app-check-your-answers__contents">
+          <dt class="app-check-your-answers__question">
+            Principal place of business
+          </dt>
+          <dd class="app-check-your-answers__answer">
+
+            {% if (location == "overseas") %}
+            <span class="form-hint"><i>HMRC address for overseas businesses</i></span>
+            Ruby House,<br>Aberdeen<br>Aberdeenshire<br>AB10 1ZP
+
+            {% else %}
+
+            30 Romford Road<br>
+  Wellington</br>
+  TF1 4ER
+  {% endif %}
+
+          </dd>
+          <dd class="app-check-your-answers__change">
+            <a href="chocs/overview#business-address">
+              Change principal place of business
+            </a>
+          </dd>
+        </div>
+
+
+
+        <div class="app-check-your-answers__contents">
+          <dt class="app-check-your-answers__question">
+            Landline number
+          </dt>
+          <dd class="app-check-your-answers__answer">
+            0121 445 5555
+          </dd>
+          <dd class="app-check-your-answers__change">
+            <a href="chocs/overview#business-tel">
+              Change landline number
+            </a>
+          </dd>
+        </div>
+        <div class="app-check-your-answers__contents">
+          <dt class="app-check-your-answers__question">
+            Mobile number
+          </dt>
+          <dd class="app-check-your-answers__answer">
+            07700 900457
+          </dd>
+          <dd class="app-check-your-answers__change">
+            <a href="chocs/overview#business-tel">
+              Change mobile number
+            </a>
+          </dd>
+        </div>
+
+
+
+
+        <div class="app-check-your-answers__contents">
+          <dt class="app-check-your-answers__question">
+            Contact preference
+          </dt>
+
+
+
+          <dd class="app-check-your-answers__answer">
+
+            {% if (data['emailAddress'] == "blank") %}
+            Letter
+            {% elseif (data['emailAddress'] == "unverified") %}
+            Email: {{data['emailAddress']}}<br>
+            {% else %}
+
+              {% if (data['preference'] == null) %}
+              Letter
+              {% elseif (data['emailAddress'] == null) %}
+              Email: john@abcdigital.com<br>
+
+              {% else %}
+              Email: {{data['emailAddress']}}<br>
+              {% endif %}
+
+            {% endif %}
+          </dd>
+          <dd class="app-check-your-answers__change">
+            <a href="chocs/overview#contact-preference">
+              Change
+            </a>
+          </dd>
+
+
+
+
+
+        </div>
+
+        <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key" scope="row">Bank account for repayments</dt>
+                <dd class="govuk-summary-list__value govuk-!-width-one-half">Account ****1234<br>Sort code ****12</dd>
+                <dd class="govuk-summary-list__actions govuk-!-width-one-quarter"><a href="chocs/payment-options" class="govuk-body govuk-link govuk-link--no-visited-state">Change bank details <span class="govuk-visually-hidden">for VAT</span></a></dd>
+
+              </div>
+
+      </dl>
+
+
+    </div>
+
+
+      <!-- <div class="govuk-grid-column-full govuk-!-padding-left-0 govuk-!-padding-right-0 govuk-!-margin-bottom-4">
+        <dl class="app-check-your-answers app-check-your-answers--short govuk-summary-list govuk-!-margin-bottom-7">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key" scope="row">Government Gateway email</dt>
+        <dd class="govuk-summary-list__value govuk-!-width-one-half">Nazim@alphabeta.co.uk</dd>
+        <dd class="govuk-summary-list__actions govuk-!-width-one-quarter"><a href="account-details-A1-view.html" class="govuk-body govuk-link govuk-link--no-visited-state">Change <span class="govuk-visually-hidden">Government Gateway </span>email</a></dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key" scope="row">Government Gateway password</dt>
+        <dd class="govuk-summary-list__value govuk-!-width-one-half"></dd>
+        <dd class="govuk-summary-list__actions govuk-!-width-one-quarter"><a href="#" class="govuk-body govuk-link govuk-link--no-visited-state">Change<span class="govuk-visually-hidden">Government Gateway </span> password</a></dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key" scope="row">Business help and tips</dt>
+        <dd class="govuk-summary-list__value govuk-!-width-one-half">sarah.phillips@example.com</dd>
+        <dd class="govuk-summary-list__actions govuk-!-width-one-quarter"><a href="#" class="govuk-body govuk-link govuk-link--no-visited-state">Change business help and tips email</a></dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key" scope="row">Go paperless with HMRC<br>[email verified]</dt>
+        <dd class="govuk-summary-list__value govuk-!-width-one-half">sarah.phillips@example.com</dd>
+        <dd class="govuk-summary-list__actions govuk-!-width-one-quarter">
+          <p><a href="#" class="govuk-body govuk-link govuk-link--no-visited-state">Change HMRC communications email</a>
+          </p>
+          <p><a href="#" class="govuk-body govuk-link govuk-link--no-visited-state">Stop emails from HMRC</a></p>
+        </dd>
+      </div>
+    </dl>
+  </div> -->
+
+
+
+      <div class="govuk-grid-column-full govuk-!-padding-left-0 govuk-!-padding-right-0 govuk-!-margin-bottom-4">
+          <h2 class="govuk-heading-l">
+
+          Self Assessment
+        </h2>
+
+        <!-- use additional modifier class to change column widths for multiple groups of questions and answers: -->
+        <!--   * `app-check-your-answers--short` for short questions -->
+        <!--   * `app-check-your-answers__questions-long` for long questions -->
+        <!--   * none for single group of q&a -->
+        <dl class="app-check-your-answers app-check-your-answers--short govuk-summary-list govuk-!-margin-bottom-7">
+          <div class="app-check-your-answers__contents">
+            <dt class="app-check-your-answers__question">
+              Full name
+            </dt>
+            <dd class="app-check-your-answers__answer">
+              Sarah Philips
+            </dd>
+            <dd class="app-check-your-answers__change">
+              <a href="#">
+                Change full name
+              </a>
+            </dd>
+          </div>
+
+          <div class="app-check-your-answers__contents">
+            <dt class="app-check-your-answers__question">
+              Registered address
+            </dt>
+            <dd class="app-check-your-answers__answer">
+              30 Romford Road<br>
+Wellington</br>
+TF1 4ER
+            </dd>
+            <dd class="app-check-your-answers__change">
+              <a href="#">
+                Change registered address
+              </a>
+            </dd>
+          </div>
+
+          <div class="app-check-your-answers__contents">
+            <dt class="app-check-your-answers__question">
+              Landline
+            </dt>
+            <dd class="app-check-your-answers__answer">
+              0121 445 5555
+            </dd>
+            <dd class="app-check-your-answers__change">
+              <a href="#">
+                Change landline
+              </a>
+            </dd>
+          </div>
+
+          <div class="app-check-your-answers__contents">
+            <dt class="app-check-your-answers__question">
+              Landline (example)
+            </dt>
+            <dd class="app-check-your-answers__answer">
+              Landline not added
+
+            </dd>
+            <dd class="app-check-your-answers__change">
+              <a href="#">
+                Add landline
+              </a>
+            </dd>
+          </div>
+
+          <div class="app-check-your-answers__contents">
+            <dt class="app-check-your-answers__question">
+              Mobile
+            </dt>
+            <dd class="app-check-your-answers__answer">
+              <a href="#">
+                View
+              </a>
+            </dd>
+            <dd class="app-check-your-answers__change">
+              <a href="#">
+                Change mobile
+              </a>
+            </dd>
+          </div>
+
+          <div class="app-check-your-answers__contents">
+            <dt class="app-check-your-answers__question">
+              Email
+            </dt>
+            <dd class="app-check-your-answers__answer">
+              sarah.phillips@example.com
+            </dd>
+            <dd class="app-check-your-answers__change">
+              <a href="#">
+                Change email
+              </a>
+            </dd>
+          </div>
+
+          <div class="app-check-your-answers__contents">
+            <dt class="app-check-your-answers__question">
+              Business tips by email
+            </dt>
+            <dd class="app-check-your-answers__answer">
+              sarah.phillips@example.com
+            </dd>
+            <dd class="app-check-your-answers__change">
+              <a href="#">
+                Change business tips by email
+              </a>
+            </dd>
+          </div>
+
+
+        </dl>
+
+      </div>
+
+      <!-- ///////////////////////////////////////////////////////////////////  -->
+      <!-- ///////////////////////////////////////////////////////////////////  -->
+      <!-- ///////////////////////   CORPORATION TAX   ///////////////////////  -->
+      <!-- ///////////////////////////////////////////////////////////////////  -->
+
+
+      <div class="govuk-grid-column-full govuk-!-padding-left-0 govuk-!-padding-right-0 govuk-!-margin-bottom-4">
+
+        <!-- only add a heading for a list if there is more than one list -->
+        <h2 class="govuk-heading-l">
+          Corporation Tax
+        </h2>
+
+        <!-- use additional modifier class to change column widths for multiple groups of questions and answers: -->
+        <!--   * `app-check-your-answers--short` for short questions -->
+        <!--   * `app-check-your-answers__questions-long` for long questions -->
+        <!--   * none for single group of q&a -->
+    <dl class="app-check-your-answers app-check-your-answers--short govuk-summary-list govuk-!-margin-bottom-7">
+          <div class="app-check-your-answers__contents">
+            <dt class="app-check-your-answers__question">
+              Company name
+            </dt>
+            <dd class="app-check-your-answers__answer">
+              ABC Digital Solutions
+            </dd>
+            <dd class="app-check-your-answers__change">
+              <a href="business-name">
+                Change company name
+              </a>
+            </dd>
+          </div>
+
+
+          <div class="app-check-your-answers__contents">
+            <dt class="app-check-your-answers__question">
+              Registered address
+            </dt>
+            <dd class="app-check-your-answers__answer">
+            30 Romford Road<br>
+Wellington</br>
+TF1 4ER
+            </dd>
+            <dd class="app-check-your-answers__change">
+              <a href="#">
+                Change registered address
+              </a>
+            </dd>
+          </div>
+
+          <div class="app-check-your-answers__contents">
+            <dt class="app-check-your-answers__question">
+              Contact name
+            </dt>
+            <dd class="app-check-your-answers__answer">
+              Nazim Rigoletti
+            </dd>
+            <dd class="app-check-your-answers__change">
+              <a href="#">
+                Change contact name
+              </a>
+            </dd>
+          </div>
+
+          <div class="app-check-your-answers__contents">
+            <dt class="app-check-your-answers__question">
+              Contact address
+            </dt>
+            <dd class="app-check-your-answers__answer">
+            30 Romford Road<br>
+Wellington<br>
+TF1 4ER
+            </dd>
+            <dd class="app-check-your-answers__change">
+              <a href="#">
+                Change contact address
+              </a>
+            </dd>
+          </div>
+
+        </dl>
+        <dl class="app-check-your-answers app-check-your-answers--short govuk-summary-list govuk-!-margin-bottom-7">
+
+          <div class="app-check-your-answers__contents">
+            <dt class="app-check-your-answers__question">
+              Daytime number
+            </dt>
+            <dd class="app-check-your-answers__answer">
+              0121 445 5555
+            </dd>
+            <dd class="app-check-your-answers__change">
+              <a href="#">
+                Change daytime number
+              </a>
+            </dd>
+          </div>
+
+          <div class="app-check-your-answers__contents">
+            <dt class="app-check-your-answers__question">
+              Evening number
+            </dt>
+            <dd class="app-check-your-answers__answer">
+              0121 445 5555
+            </dd>
+            <dd class="app-check-your-answers__change">
+              <a href="#">
+                Change evening number
+              </a>
+            </dd>
+          </div>
+
+          <div class="app-check-your-answers__contents">
+            <dt class="app-check-your-answers__question">
+              Mobile number
+            </dt>
+            <dd class="app-check-your-answers__answer">
+              07700 900457
+            </dd>
+            <dd class="app-check-your-answers__change">
+              <a href="#">
+                Change mobile number
+              </a>
+            </dd>
+          </div>
+
+
+        </dl>
+        <dl class="app-check-your-answers app-check-your-answers--short govuk-summary-list govuk-!-margin-bottom-7">
+
+          <div class="app-check-your-answers__contents">
+            <dt class="app-check-your-answers__question">
+              Password
+            </dt>
+            <dd class="app-check-your-answers__answer">
+              ****
+            </dd>
+            <dd class="app-check-your-answers__change">
+              <a href="#">
+                Change password
+              </a>
+            </dd>
+          </div>
+
+          <div class="app-check-your-answers__contents">
+            <dt class="app-check-your-answers__question">
+              Corporation Tax email
+            </dt>
+            <dd class="app-check-your-answers__answer">
+              <a href="#">
+                View email
+              </a>
+            </dd>
+            <dd class="app-check-your-answers__change">
+              <a href="#">
+                Change email
+              </a>
+            </dd>
+          </div>
+
+          <div class="app-check-your-answers__contents">
+            <dt class="app-check-your-answers__question">
+              Business tips (with dropdown)
+            </dt>
+            <dd class="app-check-your-answers__answer">
+              Not subscribed
+            </dd>
+            <dd class="app-check-your-answers__change">
+              <a href="#">
+                Subscribe to business tips
+              </a>
+            </dd>
+          </div>
+        </dl>
+
+
+
+      <!-- </div> -->
+
+      <!-- /////////////////////////////////////////////////////////  -->
+      <!-- /////////////////////////////////////////////////////////  -->
+      <!-- ///////////////////////   EPAYE   ///////////////////////  -->
+      <!-- /////////////////////////////////////////////////////////  -->
+
+      <div class="govuk-grid-column-full govuk-!-padding-left-0 govuk-!-padding-right-0 govuk-!-margin-bottom-4">
+
+        <h2 class="govuk-heading-l">
+          EPAYE
+        </h2>
+
+        <dl class="app-check-your-answers app-check-your-answers--short govuk-summary-list govuk-!-margin-bottom-7">
+          <div class="app-check-your-answers__contents">
+            <dt class="app-check-your-answers__question">
+              Business name
+            </dt>
+            <dd class="app-check-your-answers__answer">
+              Alpha-Beta Foods Ltd
+            </dd>
+            <dd class="app-check-your-answers__change">
+              <a href="#">
+                Change business name
+              </a>
+            </dd>
+          </div>
+
+          <div class="app-check-your-answers__contents">
+            <dt class="app-check-your-answers__question">
+              Trading name
+            </dt>
+            <dd class="app-check-your-answers__answer">
+              ABC Digital Solutions
+            </dd>
+            <dd class="app-check-your-answers__change">
+              <a href="#">
+                Change trading name
+              </a>
+            </dd>
+          </div>
+
+          <div class="app-check-your-answers__contents">
+            <dt class="app-check-your-answers__question">
+              Registered address
+            </dt>
+            <dd class="app-check-your-answers__answer">
+            30 Romford Road<br>
+Wellington</br>
+TF1 4ER
+            </dd>
+            <dd class="app-check-your-answers__change">
+              <a href="#">
+                Change registered address
+              </a>
+            </dd>
+          </div>
+
+          <div class="app-check-your-answers__contents">
+            <dt class="app-check-your-answers__question">
+              Contact name
+            </dt>
+            <dd class="app-check-your-answers__answer">
+              Nazim Rigoletti
+            </dd>
+            <dd class="app-check-your-answers__change">
+              <a href="#">
+                Change contact name
+              </a>
+            </dd>
+          </div>
+
+          <div class="app-check-your-answers__contents">
+            <dt class="app-check-your-answers__question">
+              Contact address
+            </dt>
+            <dd class="app-check-your-answers__answer">
+            30 Romford Road<br>
+Wellington<br>
+TF1 4ER
+            </dd>
+            <dd class="app-check-your-answers__change">
+              <a href="#">
+                Change contact address
+              </a>
+            </dd>
+          </div>
+
+          <div class="app-check-your-answers__contents">
+            <dt class="app-check-your-answers__question">
+              Landline
+            </dt>
+            <dd class="app-check-your-answers__answer">
+              0121 445 5555
+            </dd>
+            <dd class="app-check-your-answers__change">
+              <a href="#">
+                Change landline
+              </a>
+            </dd>
+          </div>
+          <div class="app-check-your-answers__contents">
+            <dt class="app-check-your-answers__question">
+              Mobile
+            </dt>
+            <dd class="app-check-your-answers__answer">
+              07700 900457
+            </dd>
+            <dd class="app-check-your-answers__change">
+              <a href="#">
+                Change mobile
+              </a>
+            </dd>
+          </div>
+
+
+          <div class="app-check-your-answers__contents">
+            <dt class="app-check-your-answers__question">
+              Business contact
+            </dt>
+            <dd class="app-check-your-answers__answer">
+              <a href="#">
+                View email
+              </a>
+            </dd>
+            <dd class="app-check-your-answers__change">
+              <a href="#">
+                View email
+              </a>
+            </dd>
+          </div>
+
+          <div class="app-check-your-answers__contents">
+            <dt class="app-check-your-answers__question">
+              Communication
+            </dt>
+            <dd class="app-check-your-answers__answer">
+              <a href="#">
+                View email
+              </a>
+            </dd>
+            <dd class="app-check-your-answers__change">
+              <a href="#">
+                View email
+              </a>
+            </dd>
+          </div>
+
+
+          <div class="app-check-your-answers__contents">
+            <dt class="app-check-your-answers__question">
+              Business tips (with dropdown)
+            </dt>
+            <dd class="app-check-your-answers__answer">
+              NA
+            </dd>
+            <dd class="app-check-your-answers__change">
+              <a href="#">
+                Add email
+              </a>
+            </dd>
+          </div>
+
+          <div class="app-check-your-answers__contents">
+            <dt class="app-check-your-answers__question">
+              Message Notifications (under PAYE for employers heading)
+            </dt>
+            <dd class="app-check-your-answers__answer">
+              nazim.rigoletti@example.com
+            </dd>
+            <dd class="app-check-your-answers__change">
+              <a href="#">
+                Change email
+              </a>
+            </dd>
+          </div>
+
+          <div class="app-check-your-answers__contents">
+            <dt class="app-check-your-answers__question">
+              RTI submission confirmations (under PAYE for employers heading)
+            </dt>
+            <dd class="app-check-your-answers__answer">
+              nazim.rigoletti@example.com
+            </dd>
+            <dd class="app-check-your-answers__change">
+              <a href="#">
+                Change email
+              </a>
+            </dd>
+          </div>
+
+          <div class="app-check-your-answers__contents">
+            <dt class="app-check-your-answers__question">
+              Password
+            </dt>
+            <dd class="app-check-your-answers__answer">
+              ****
+            </dd>
+            <dd class="app-check-your-answers__change">
+              <a href="#">
+                Change account password
+              </a>
+            </dd>
+          </div>
+
+
+        </dl>
+        <!-- ==============  -->
+
+
+
+      <!-- </div>
+
+
+      <!-- /////////////////////////////////////////////////////////  -->
+      <!-- ////////////////////////   VAT  /////////////////////////  -->
+      <!-- /////////////////////////////////////////////////////////  -->
+
+      <div class="govuk-grid-column-full govuk-!-padding-left-0 govuk-!-padding-right-0 govuk-!-margin-bottom-4">
+
+        <!-- only add a heading for a list if there is more than one list -->
+          <h2 class="govuk-heading-l">
+          Making Tax Digital for VAT
+        </h2>
+
+        <!-- use additional modifier class to change column widths for multiple groups of questions and answers: -->
+        <!--   * `app-check-your-answers--short` for short questions -->
+        <!--   * `app-check-your-answers__questions-long` for long questions -->
+        <!--   * none for single group of q&a -->
+        <dl class="app-check-your-answers app-check-your-answers--short govuk-summary-list govuk-!-margin-bottom-7">
+          <div class="app-check-your-answers__contents">
+            <dt class="app-check-your-answers__question">
+              Business name
+            </dt>
+            <dd class="app-check-your-answers__answer">
+              ABC Digital Solutions
+            </dd>
+            <dd class="app-check-your-answers__change">
+
+
+
+
+            {% if company == "partnership" %}
+            <a href="chocs/overview?company=partnership">
+              Change business name
+            </a>
+            {% else %}
+            <a href="chocs/business-name">
+              Change business name
+            </a>
+            {% endif %}
+
+
+            </dd>
+          </div>
+
+
+          <div class="app-check-your-answers__contents">
+            <dt class="app-check-your-answers__question">
+              Principal place of business
+            </dt>
+            <dd class="app-check-your-answers__answer">
+
+              {% if (location == "overseas") %}
+              <span class="form-hint"><i>HMRC address for overseas businesses</i></span>
+              Ruby House,<br>Aberdeen<br>Aberdeenshire<br>AB10 1ZP
+
+              {% else %}
+
+              30 Romford Road<br>
+Wellington</br>
+TF1 4ER
+{% endif %}
+
+            </dd>
+            <dd class="app-check-your-answers__change">
+              <a href="chocs/overview#business-address">
+                Change principal place of business
+              </a>
+            </dd>
+          </div>
+
+
+
+          <div class="app-check-your-answers__contents">
+            <dt class="app-check-your-answers__question">
+              Landline number
+            </dt>
+            <dd class="app-check-your-answers__answer">
+              0121 445 5555
+            </dd>
+            <dd class="app-check-your-answers__change">
+              <a href="chocs/overview#business-tel">
+                Change landline number
+              </a>
+            </dd>
+          </div>
+          <div class="app-check-your-answers__contents">
+            <dt class="app-check-your-answers__question">
+              Mobile number
+            </dt>
+            <dd class="app-check-your-answers__answer">
+              07700 900457
+            </dd>
+            <dd class="app-check-your-answers__change">
+              <a href="chocs/overview#business-tel">
+                Change mobile number
+              </a>
+            </dd>
+          </div>
+
+
+
+
+          <div class="app-check-your-answers__contents">
+            <dt class="app-check-your-answers__question">
+              Contact preference
+            </dt>
+
+
+
+            <dd class="app-check-your-answers__answer">
+
+              {% if (data['emailAddress'] == "blank") %}
+              Letter
+              {% elseif (data['emailAddress'] == "unverified") %}
+              Email: {{data['emailAddress']}}<br>
+              {% else %}
+
+                {% if (data['preference'] == null) %}
+                Letter
+                {% elseif (data['emailAddress'] == null) %}
+                Email: john@abcdigital.com<br>
+
+                {% else %}
+                Email: {{data['emailAddress']}}<br>
+                {% endif %}
+
+              {% endif %}
+            </dd>
+            <dd class="app-check-your-answers__change">
+              <a href="chocs/overview#contact-preference">
+                Change
+              </a>
+            </dd>
+
+
+
+
+
+          </div>
+
+          <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key" scope="row">Bank account for repayments</dt>
+                  <dd class="govuk-summary-list__value govuk-!-width-one-half">Account ****1234<br>Sort code ****12</dd>
+                  <dd class="govuk-summary-list__actions govuk-!-width-one-quarter"><a href="chocs/payment-options" class="govuk-body govuk-link govuk-link--no-visited-state">Change bank details <span class="govuk-visually-hidden">for VAT</span></a></dd>
+
+                </div>
+
+        </dl>
+
+
+      </div>
+
+
+
+      <section>
+        <div class="manage-blocks">
+          <h3 class="govuk-heading-l" name="manageaccount">Manage your tax accounts</h3>
+            <div class="govuk-grid-row">
+              <div class="govuk-grid-column-one-third">
+                <h3 class="govuk-heading-s"><a href="chocs/overview">VAT</a></h3>
+                  <p class="govuk-body">Manage your VAT details and view returns and payments</p>
+              </div>
+                <div class="govuk-grid-column-one-third">
+                  <h3 class="govuk-heading-s"><a href="chocs/overview">PAYE</a></h3>
+                  <p class="govuk-body">Manage your PAYE details etc</p>
+                </div>
+                  <div class="govuk-grid-column-one-third">
+                    <h3 class="govuk-heading-s"><a href="chocs/overview">Corporation Tax</a></h3>
+                    <p class="govuk-body">Manage your Corporation tax details etc</p>
+                  </div>
+                </div>
+
+                <div class="govuk-grid-row">
+                  <div class="govuk-grid-column-one-third">
+                    <h3 class="govuk-heading-s"><a href="chocs/overview">VAT MOSS</a></h3>
+                      <p class="govuk-body">Change your business VAT details</p>
+                  </div>
+                    <div class="govuk-grid-column-one-third">
+                      <h3 class="govuk-heading-s"><a href="chocs/overview">Income Tax</a></h3>
+                      <p class="govuk-body">Manage your Income Tax details and view returns and payments</p>
+                    </div>
+                      <!-- <div class="govuk-grid-column-one-third">
+                        <h3 class="govuk-heading-s"><a href="chocs/overview">Your business details</a></h3>
+                          <p class="govuk-body">Change your business VAT details.</p>
+                      </div> -->
+                    </div>
+                  </section>
+
+          </div>
+
+
+        </div>
+
+      </main>
+
+      {% endblock %}

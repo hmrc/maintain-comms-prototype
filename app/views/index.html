@@ -1,0 +1,92 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Maintain Preferences Prototype
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "alpha"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+
+
+{% endblock %}
+
+{% block content %}
+
+      <h1 class="govuk-heading-xl">
+        Maintain Preferences Prototype
+      </h1>
+
+
+      <h2 class="govuk-heading-m">v0-4-0 UR 04.12.19</h2>
+
+      <p class="govuk-body">Summary of features for this version:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Design variation with mulitple changes per page</li>
+      </ul>
+    <p><a href="0-4-0/login">View</a> | <a href="0-4-0/index">Contents</a>
+      </p>
+
+
+      <h2 class="govuk-heading-m">v0-3-0 UR 21.11.19</h2>
+
+      <p class="govuk-body">Summary of features for this version:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Design variation with mulitple changes per page</li>
+      </ul>
+    <p><a href="0-3-0/login">View</a> | <a href="0-3-0/index">Contents</a>
+      </p>
+
+
+
+      <h2 class="govuk-heading-m">v0-2-0 UR 21.11.19</h2>
+
+      <p class="govuk-body">Summary of features for this version:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>replicated BTA accounts page</li>
+        <li>looked at how to handle non etmp taxes</li>
+      </ul>
+    <p><a href="0-2-0/login">View</a> | <a href="0-2-0/index">Contents</a>
+      </p>
+
+
+      <h2 class="govuk-heading-m">v0-1-0 UR 06.11.19</h2>
+
+      <p class="govuk-body">Summary of features for this version:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>initial prototype created</li>
+        <li>journeys created for scenarios</li>
+        <li>limited logic in place</li>
+      </ul>
+    <p><a href="0-1-0/login">View</a> | <a href="0-1-0/index">Contents</a>
+      </p>
+
+
+<!--
+
+      <h2 class="govuk-heading-m">v0-1-0 UR 22.10.19</h2>
+
+      <p class="govuk-body">Summary of features for this version:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>initial prototype created</li>
+        <li>journeys created for scenarios</li>
+        <li>limited logic in place</li>
+      </ul>
+    <p><a href="0-1-0/login">View</a> | <a href="0-1-0/index">Contents</a>
+      </p> -->
+
+
+
+{% endblock %}

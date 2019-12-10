@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+How would you prefer to be contacted?
+{% endblock %}
+
+{% block beforeContent %}
+{% include ".././includes/phase.html" %}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="choose-address" method="post">
+    <!-- <form method="post" class="form"> -->
+
+    {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+    {{ govukCheckboxes({
+      idPrefix: "contactPref",
+      name: "contactPref",
+      fieldset: {
+        legend: {
+          text: "How would you prefer to be contacted?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--xl"
+        }
+      },
+
+      items: [
+        {
+          value: "Primary email address",
+          text: "sales@abcdigital.com"
+        },
+        {
+          value: "Secondary email address",
+          text: "john.b@abcdigital.com"
+        },
+        {
+          value: "letter",
+          text: "Letter"
+        },
+        {
+          value: "SMS",
+          text: "SMS"
+        }
+      ]
+    }) }}
+
+
+
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+
+    </form>
+  </div>
+</div>
+
+
+
+
+
+  {% endblock %}

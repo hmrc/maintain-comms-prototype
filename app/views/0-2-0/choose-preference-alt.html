@@ -1,0 +1,130 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+How would you prefer to be contacted?
+{% endblock %}
+
+{% block beforeContent %}
+{% include "./includes/phase.html" %}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="confirm-preference" method="post">
+    <!-- <form method="post" class="form"> -->
+
+    {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+
+
+    {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+
+    {% if (data['emailAddress'] == null)  %}
+
+    {{ govukCheckboxes({
+      idPrefix: "contactPref",
+      name: "contactPref",
+      fieldset: {
+        legend: {
+          text: "How would you prefer to be contacted?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--xl"
+        }
+      },
+      hint: {
+         text: "You are currently contacted by letter for VAT reminders."
+       },
+
+      items: [
+        {
+          value: "Primary email address",
+          text: "accounts@abcdigital.com"
+        },
+        {
+          value: "Secondary email address",
+          text: "john.b@abcdigital.com"
+        },
+        {
+          value: "letter",
+          text: "Letter",
+          checked: true
+        },
+        {
+          value: "SMS",
+          text: "SMS"
+        }
+      ]
+    }) }}
+
+    {% else %}
+
+    {{ govukCheckboxes({
+      idPrefix: "contactPref",
+      name: "contactPref",
+      fieldset: {
+        legend: {
+          text: "How would you prefer to be contacted?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--xl"
+        }
+      },
+      hint: {
+         text: "You are currently contacted by letter for VAT reminders."
+       },
+
+      items: [
+        {
+          value: "Primary email address",
+          text: data.emailAddress
+        },
+        {
+          value: "Secondary email address",
+          text: "john.b@abcdigital.com"
+        },
+        {
+          value: "letter",
+          text: "Letter",
+          checked: true
+        },
+        {
+          value: "SMS",
+          text: "SMS"
+        }
+      ]
+    }) }}
+
+    {% endif %}
+
+
+
+
+
+
+
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+
+    </form>
+  </div>
+</div>
+
+
+
+
+
+  {% endblock %}

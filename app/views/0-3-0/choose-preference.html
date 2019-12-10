@@ -1,0 +1,146 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+How would you prefer to be contacted?
+{% endblock %}
+
+{% block beforeContent %}
+{% include "./includes/phase.html" %}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="confirm-preference" method="post">
+    <!-- <form method="post" class="form"> -->
+    {% if (data['emailAddress'] == null)  %}
+
+    {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+    {{ govukRadios({
+      idPrefix: "contactPref",
+      name: "contactPref",
+      fieldset: {
+        legend: {
+          text: "How would you prefer to be contacted?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--xl"
+        }
+      },
+      hint: {
+         text: "You are currently contacted by letter for VAT."
+       },
+      items: [
+
+      {
+        value: "Primary email address",
+        text: "accounts@abcdigital.com"
+      },
+              {
+          value: "Secondary email address",
+          text: "john.b@abcdigital.com"
+        },
+        {
+          value: "SMS",
+          text: "SMS"
+        }
+      ]
+    }) }}
+
+
+
+    {% else %}
+
+    <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+          <h1 class="govuk-fieldset__heading">
+            How would you prefer to be contacted?
+          </h1>
+        </legend>
+
+            <span id="changed-name-hint" class="govuk-hint">
+
+              {% if (data['contactPref'] == "Primary email address")  %}
+              Your communications preference for VAT is currently your primary email {{data['emailAddress']}}
+              {% else %}
+              Your communications preference for VAT is currently letter.
+              {% endif %}
+
+        </span>
+
+
+        <div class="govuk-radios">
+          {% if (data['contactPref'] != "Primary email address")  %}
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="contactPref" name="contactPref" type="radio" value="Primary email address">
+            <label class="govuk-label govuk-radios__label govuk-label--s" for="sign-in">
+              Primary email address
+            </label>
+            <span id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+              {{data['emailAddress']}} (Email address pending)
+            </span>
+          </div>
+          {% endif %}
+
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="contactPref-2" name="contactPref" type="radio" value="Secondary email address">
+            <label class="govuk-label govuk-radios__label govuk-label--s" for="sign-in">
+              Secondary email address
+            </label>
+            <span id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+              john.b@abcdigital.com
+            </span>
+
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="contactPref-3" name="contactPref" type="radio" value="SMS">
+            <label class="govuk-label govuk-radios__label govuk-label--s" for="SMS">
+              SMS
+            </label>
+            <span id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+              07985 555 555
+            </span>
+
+          </div>
+
+          {% if (data['contactPref'] == "Primary email address")  %}
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="contactPref-4" name="contactPref" type="radio" value="Letter">
+            <label class="govuk-label govuk-radios__label" for="contactPref-4">
+              Letter
+            </label>
+          </div>
+          {% endif %}
+
+        </div>
+      </fieldset>
+    </div>
+
+
+    {% endif %}
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+
+    </form>
+  </div>
+</div>
+
+
+
+
+
+  {% endblock %}

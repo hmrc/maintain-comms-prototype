@@ -1,0 +1,88 @@
+// BTA new pattern
+
+
+.card-container {
+    margin-bottom: 2em;
+    padding: 1em 0 1.5em;
+    background-color: #ffffff;
+    border: 1px solid #bfc1c3;
+
+.card-body {
+        // border-bottom: 0px solid $panel-colour;
+        // padding: 12px;
+
+  *:last-child {
+    margin-bottom: 0;
+        }
+    }
+}
+
+.card-grey {
+    background-color: #f8f8f8;
+}
+
+.card-header-colour {
+    background-color: #005ea5;
+
+    .govuk-caption-m,
+    .govuk-heading-s,
+    .govuk-heading-m {
+        color: #ffffff;
+    }
+}
+
+.card-header-3 {
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #bfc1c3;
+}
+
+.card-border-top {
+    border-top: 1px solid #005ea5;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;
+}
+
+.inline-padding-right {
+    display: inline;
+    padding-right: 0.4em;
+}
+
+.topnav {
+    overflow: hidden;
+    // padding-bottom: 2em;
+    padding-top: 20px;
+
+    a {
+        // text-align: center;
+        padding-right: 34px;
+        font-size: 19px;
+    }
+
+}
+.unread-messages-count {
+  text-align: right;
+}
+
+.inbox-wrapper {
+  display: block;
+    position: relative;
+    border-bottom: 1px solid #bfc1c3;
+    clear: both;
+}
+.inbox-wrapper .cya-question {
+  padding:15px 0;
+  display:inline-block;
+}
+.inbox-wrapper .cya-answer {
+  float: right;
+  padding:20px 0;
+
+}
+table.govuk-table.messages .govuk-table__body .govuk-table__header {
+  font-weight: normal;
+}
+
+
+
+// MANAGE Account
