@@ -1,0 +1,98 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+How would you prefer to be contacted?
+{% endblock %}
+
+{% block beforeContent %}
+{% include "./includes/phase.html" %}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="confirm-preference" method="post">
+
+    <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+          <h1 class="govuk-fieldset__heading">
+            How would you prefer to be contacted?
+          </h1>
+        </legend>
+
+            <span id="changed-name-hint" class="govuk-hint">
+              You are currently contacted by letter for VAT
+            </span>
+
+
+        <div class="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="contactPref" name="contactPref" type="radio" value="Email address">
+            <label class="govuk-label govuk-radios__label govuk-label--s" for="sign-in">
+              Primary email address
+            </label>
+            <span id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+              {{data['emailAddress']}} (Email address pending)
+            </span>
+          </div>
+
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="contactPref-2" name="contactPref" type="radio" value="Landline number">
+            <label class="govuk-label govuk-radios__label govuk-label--s" for="sign-in">
+              Landline number
+            </label>
+            <span id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+              0121 445 5555
+            </span>
+
+          </div>
+
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="contactPref-2" name="contactPref" type="radio" value="Mobile number">
+            <label class="govuk-label govuk-radios__label govuk-label--s" for="sign-in">
+              Mobile number
+            </label>
+            <span id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+              07700 900457
+            </span>
+
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="contactPref-3" name="contactPref" type="radio" value="SMS">
+            <label class="govuk-label govuk-radios__label govuk-label--s" for="SMS">
+              SMS
+            </label>
+            <span id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+              07700 900457
+            </span>
+
+          </div>
+
+
+        </div>
+      </fieldset>
+    </div>
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+</form>
+
+  </div>
+</div>
+
+
+
+
+
+  {% endblock %}

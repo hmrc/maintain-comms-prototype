@@ -1,0 +1,143 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Messages
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% include "./includes/phase.html" %}
+
+{% include "./includes/bta-nav.html" %}
+
+
+{% endblock %}
+
+{% block content %}
+
+
+
+
+
+      <div class="govuk-width-container">
+          <div id="content">
+
+
+
+
+                 <h1 class="govuk-heading-xl">Messages</h1>
+
+
+
+
+              <section id="message-section" class="margin-top-small-medium govuk-!-margin-bottom-9">
+                  <div class="divider--bottom">
+                    <h2 id="message-inbox-heading" class="govuk-heading-m" style="margin-bottom:0px;">Inboxes</h2></div>
+
+
+                      <div class="inbox-wrapper" style="border-top:1px solid #bfc1c3; margin-top:20px; padding-top:10px;">
+                        <div class="cya-question">
+                          <p>
+
+
+
+
+                            <a id="account-messages" href="messages/messages-account" data-journey-click="link - click:Messages:VAT messages" aria-label="VAT messages 0 unread messages">
+                              Account messages
+                            </a>
+
+
+                          </p>
+                        </div>
+                        <div class="cya-answer">
+                          {% if (data['emailAddress'] != null)  %}
+                          <p class="unread-messages-count" aria-hidden="true" id="count_messages" name="count_sa_success"><span class="govuk-body govuk-!-font-weight-bold">1</span> unread messages</p>
+                          {% else %}
+                          <p class="unread-messages-count" aria-hidden="true" id="count_messages" name="count_sa_success"><span class="bold">0</span> unread messages</p>
+
+                          {% endif %}
+
+
+                        </div>
+                      </div>
+
+
+
+
+
+
+
+                <div class="inbox-wrapper">
+                  <div class="cya-question">
+                    <p>
+                      <a id="epaye-messages" href="#" data-journey-click="link - click:Messages:EPAYE messages" aria-label="PAYE for employers messages 0 unread messages">
+                        PAYE for employers messages
+
+
+                      </a>
+                    </p>
+                  </div>
+                  <div class="cya-answer">
+
+                      <p class="unread-messages-count" aria-hidden="true" id="count_epaye_messages" name="count_epaye_success"><span class="bold">0</span> unread messages</p>
+
+                  </div>
+                </div>
+
+
+                <div class="inbox-wrapper">
+                  <div class="cya-question">
+                    <p>
+
+
+
+
+                      <a id="account-messages" href="messages/messages-account-vat" data-journey-click="link - click:Messages:VAT messages" aria-label="VAT messages 0 unread messages">
+                        VAT messages
+                      </a>
+
+
+                    </p>
+                  </div>
+                  <div class="cya-answer">
+
+                    {% if (data['contactPref'] != null)  %}
+                    <p class="unread-messages-count" aria-hidden="true" id="count_messages" name="count_sa_success"><span class="govuk-body govuk-!-font-weight-bold">1</span> unread messages</p>
+                    {% else %}
+                    <p class="unread-messages-count" aria-hidden="true" id="count_messages" name="count_sa_success"><span class="bold">0</span> unread messages</p>
+
+                    {% endif %}
+
+
+                  </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+                </section>
+
+                <p class="govuk-body govuk-!-font-size-16"><a href="#">Is there anything wrong with this page?</a></p>
+
+</div>
+</div>
+
+
+
+
+
+
+
+{% endblock %}

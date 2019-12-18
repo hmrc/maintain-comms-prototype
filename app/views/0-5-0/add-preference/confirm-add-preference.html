@@ -1,0 +1,114 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check your answers
+{% endblock %}
+
+{% block beforeContent %}
+{% include ".././includes/phase.html" %}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+<form class="form" action="../confirmation-update-preference" method="post">
+  <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+
+      <h1 class="govuk-fieldset__heading">
+        Check your answers
+      </h1>
+    </legend>
+
+
+    {{ govukSummaryList({
+            classes: 'govuk-!-margin-bottom-9',
+            rows: [
+              {
+                key: {
+                  text: "Tax"
+                },
+                value: {
+                  text: "VAT"
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "choose-tax",
+                      text: "Change",
+                      visuallyHiddenText: "choose tax"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "Contact preference"
+                },
+                value: {
+                  text: "Letter"
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "add-preference",
+                      text: "Change",
+                      visuallyHiddenText: "add preference"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "Primary address"
+                },
+                value: {
+                  html: "30 Romford Road<br>TF1 4ER"
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "choose-address",
+                      text: "Change",
+                      visuallyHiddenText: "address"
+                    }
+                  ]
+                }
+              }
+            ]
+          }) }}
+
+
+
+
+
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+
+        {{ govukButton({
+          text: "Confirm and continue"
+        }) }}
+
+
+    </fieldset>
+  </div>
+
+
+
+      </form>
+
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}

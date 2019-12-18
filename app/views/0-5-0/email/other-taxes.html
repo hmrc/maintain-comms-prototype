@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Would you like to change your email for other taxes
+{% endblock %}
+
+{% block beforeContent %}
+{% include ".././includes/phase.html" %}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="choose-tax" method="post">
+    <!-- <form method="post" class="form"> -->
+
+
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+
+
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  classes: "govuk-radios--inline",
+  idPrefix: "how-contacted-conditional",
+  name: "how-contacted",
+  fieldset: {
+    legend: {
+      text: "Would you like to change your email for other taxes?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--xl"
+    }
+  },
+  hint: {
+    text: "You can update VAT, PAYE and Self Assessment details at the same time."
+  },
+  items: [
+    {
+      value: "yes",
+      text: "Yes",
+      conditional: {
+        html: yesTax
+      }
+    },
+    {
+      value: "no",
+      text: "No",
+      conditional: {
+        html: noTax
+      }
+    }
+  ]
+}) }}
+
+
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+
+
+
+
+    </form>
+  </div>
+</div>
+
+
+
+
+
+  {% endblock %}
