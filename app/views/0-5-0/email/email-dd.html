@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Would you like to change your email for other taxes
+Do you want to use this email for your direct debit notifications
 {% endblock %}
 
 {% block beforeContent %}
@@ -32,28 +32,28 @@ Would you like to change your email for other taxes
 
 {{ govukRadios({
   classes: "govuk-radios--inline",
-  idPrefix: "how-contacted-conditional",
-  name: "how-contacted",
+  idPrefix: "emailDD-conditional",
+  name: "emailDD",
   fieldset: {
     legend: {
-      text: "Would you like to change your email for other taxes?",
+      text: "Do you want to use this email for your direct debit notifications?",
       isPageHeading: true,
       classes: "govuk-fieldset__legend--l"
     }
   },
   hint: {
-    text: "You can update VAT, PAYE and Self Assessment details at the same time."
+    text: "You will be contacted using this email address before direct debits are taken."
   },
   items: [
     {
-      value: "yes",
+      value: "Yes",
       text: "Yes",
       conditional: {
         html: yesTax
       }
     },
     {
-      value: "no",
+      value: "No",
       text: "No",
       conditional: {
         html: noTax

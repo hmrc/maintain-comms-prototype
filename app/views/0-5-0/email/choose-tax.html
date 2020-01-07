@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Would you like to change your email for other taxes
+Which taxes do you want to change
 {% endblock %}
 
 {% block beforeContent %}
@@ -19,7 +19,7 @@ Would you like to change your email for other taxes
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form class="form" action="confirmation-email" method="post">
+    <form class="form" action="confirm-email" method="post">
     <!-- <form method="post" class="form"> -->
     {% if (data['tax'] == "itsa")  %}
 
@@ -31,9 +31,9 @@ Would you like to change your email for other taxes
       name: "emailTax",
       fieldset: {
         legend: {
-          text: "Would you like to change your email for other taxes?",
+          text: "Which taxes do you want to change?",
           isPageHeading: true,
-          classes: "govuk-fieldset__legend--xl"
+          classes: "govuk-fieldset__legend--l"
         }
       },
 
@@ -72,9 +72,9 @@ Would you like to change your email for other taxes
       name: "emailTax",
       fieldset: {
         legend: {
-          text: "Would you like to change your email for other taxes?",
+          text: "Which taxes do you want to change?",
           isPageHeading: true,
-          classes: "govuk-fieldset__legend--xl"
+          classes: "govuk-fieldset__legend--l"
         }
       },
 
