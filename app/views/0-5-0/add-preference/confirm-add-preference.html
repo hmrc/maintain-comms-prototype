@@ -21,7 +21,7 @@
 <form class="form" action="../confirmation-update-preference" method="post">
   <div class="govuk-form-group">
   <fieldset class="govuk-fieldset">
-    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
 
       <h1 class="govuk-fieldset__heading">
         Check your answers
@@ -37,12 +37,31 @@
                   text: "Tax"
                 },
                 value: {
-                  text: "VAT"
+                  text: "A new email"
+
                 },
                 actions: {
                   items: [
                     {
-                      href: "choose-tax",
+                      href: "../choose-preference",
+                      text: "Change",
+                      visuallyHiddenText: "choose tax"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "Email address"
+                },
+                value: {
+                  text: "sales@abcdigital.com"
+
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "../business-email",
                       text: "Change",
                       visuallyHiddenText: "choose tax"
                     }
@@ -54,35 +73,20 @@
                   text: "Contact preference"
                 },
                 value: {
-                  text: "Letter"
+                  text: "VAT"
                 },
                 actions: {
                   items: [
                     {
-                      href: "add-preference",
+                      href: "../choose-preference",
+
                       text: "Change",
                       visuallyHiddenText: "add preference"
                     }
                   ]
                 }
-              },
-              {
-                key: {
-                  text: "Primary address"
-                },
-                value: {
-                  html: "30 Romford Road<br>TF1 4ER"
-                },
-                actions: {
-                  items: [
-                    {
-                      href: "choose-address",
-                      text: "Change",
-                      visuallyHiddenText: "address"
-                    }
-                  ]
-                }
               }
+
             ]
           }) }}
 

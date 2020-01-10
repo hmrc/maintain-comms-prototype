@@ -77,6 +77,18 @@ module.exports = function (router) {
              res.redirect(301, '/' + version + '/email/confirmation-email');
          });
 
+         router.get('/' + version + '/email/confirmation-email', function (req, res) {
+               req.session.company = req.query.company || req.session.company
+               req.session.BTAuser = req.query.BTAuser || req.session.BTAuser
+               req.session.emailUpdating = req.query.emailUpdating || req.session.emailUpdating
 
+
+                 res.render(version + '/email/confirmation-email', {
+                   'BTAuser':req.session.BTAuser,
+                   'company':req.session.company,
+                   'email':req.session.email
+
+                 })
+             });
 
 }

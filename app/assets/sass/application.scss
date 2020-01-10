@@ -28,6 +28,21 @@ $govuk-assets-path: '/govuk/assets/';
     color: #6f777b;
   }
 
+  .hmrc-notification-badge {
+      display: inline-block;
+      min-width: 10px;
+      padding: 5px 8px 1px 8px;
+      border-radius: 10px;
+      color: #ffffff;
+      background: #b10e1e;
+      font-size: 14px;
+      font-weight: 600;
+      text-align: center;
+      white-space: nowrap;
+      margin: 0 0 0 2px;
+    }
+
+
 bold {
   font-weight: bold;
 }

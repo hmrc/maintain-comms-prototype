@@ -46,7 +46,7 @@
     {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 
 
-    {% if (data['emailAddress'] == null)  %}
+    {% if (data['emailAddress'] == null) or (data['emailAddress'] == "unverified")  %}
 
     {% else %}
 
@@ -148,16 +148,25 @@
                         Email
                       </dt>
                       <dd class="govuk-summary-list__value">
-                        {% if (data['emailAddress'] == null)  %}
+
+
+                        {% if (data['emailAddress'] == null) %}
                         info@abcdigital.com
+                        {% elseif (data['emailAddress'] == "unverified")  %}
+                        sales@abcdigital.com
+                        <br>
+                        <a href="email/confirmation-email">Resend email verification</a>
 
                         {% else %}
-                        {{data['emailAddress']}}
-                        {% endif %}
+
+                        sales@abcdigital.com
+                      {% endif %}
+
+
 
                       </dd>
                       <dd class="govuk-summary-list__actions">
-                        {% if (data['emailAddress'] == null)  %}
+                        {% if (data['emailAddress'] == null) or (data['emailAddress'] == "unverified")  %}
 
                         <a href="email/business-email?tax=itsa">
                         Change <span class="govuk-visually-hidden">email</span>
@@ -172,57 +181,44 @@
                       </dd>
                     </div>
 
+
                     <div class="govuk-summary-list__row">
                       <dt class="govuk-summary-list__key">
                         Contact preference
                       </dt>
 
 
+                      {% if (data['contactPref'] == "NuLetter")  %}
 
+                        <dd class="govuk-summary-list__value">Letter</dd>
+                        <dd class="govuk-summary-list__actions">
+                          <span class="govuk-body govuk-!-font-weight-bold">Pending</span>
+                        </dd>
+
+                      {% elseif (data['contactPref'] == "Letter")  %}
+
+                        <dd class="govuk-summary-list__value">Letter</dd>
+                        <dd class="govuk-summary-list__actions">
+
+                            <a href="choose-preference">
+                              Change
+                            </a>
+                      </dd>
+
+                      {% else %}
                       <dd class="govuk-summary-list__value">
 
-                        {% if (data['emailAddress'] == null) %}
-                        Letter
-                        {% elseif (data['emailAddress'] == "unverified") %}
-                        Email: {{data['emailAddress']}}<br>
-                        {% else %}
+                      Email
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                      <a href="choose-preference">
+                        Change
+                      </a>
 
-                          {% if (data['preference'] == null) %}
-                          Letter
-                          {% elseif (data['emailAddress'] == null) %}
-                          Email: john@abcdigital.com<br>
-
-                          {% else %}
-                          Email: {{data['emailAddress']}}<br>
-                          {% endif %}
-
-                        {% endif %}
-                      </dd>
-                      <dd class="govuk-summary-list__actions">
-                        <a href="add-preference/choose-tax">
-                          Change
-                        </a>
-                      </dd>
-
-
-
-
+                    </dd>
+                    {% endif %}
 
                     </div>
-
-                    <!-- <div class="govuk-summary-list__row">
-                      <dt class="govuk-summary-list__key">
-                        Business tips by email
-                      </dt>
-                      <dd class="govuk-summary-list__value">
-                        sarah.phillips@example.com
-                      </dd>
-                      <dd class="govuk-summary-list__actions">
-                        <a href="#">
-                          Change business tips by email
-                        </a>
-                      </dd>
-                    </div> -->
 
 
                   </dl>
@@ -534,7 +530,8 @@
                                           </dt>
                                           <dd class="govuk-summary-list__value">
 
-                                            {% if (data['emailAddress'] == null)  %}
+                                            {% if (data['emailAddress'] == null) or (data['emailAddress'] == "unverified")  %}
+
                                             info@abcdigital.com
 
                                             {% else %}
@@ -544,7 +541,7 @@
                                           </dd>
 
                                           <dd class="govuk-summary-list__actions">
-                                            {% if (data['emailAddress'] == null)  %}
+                                            {% if (data['emailAddress'] == null) or (data['emailAddress'] == "unverified")  %}
 
                                             <a href="email/business-email?tax=paye">
                                             Change <span class="govuk-visually-hidden">email</span>
@@ -687,7 +684,7 @@
                         {% else %}
 
                           {% if company == "partnership" %}
-                          <a href="chocs/overview?company=partnership">
+                          <a href="https://vatvc-prototype.herokuapp.com/3-9-0/chocs/ppob?route=ma?company=partnership">
                             Change <span class="govuk-visually-hidden">business name</span>
                           </a>
                           {% else %}
@@ -724,7 +721,7 @@
 
                       </dd>
                       <dd class="govuk-summary-list__actions">
-                        <a href="chocs/overview">
+                        <a href="https://vatvc-prototype.herokuapp.com/3-9-0/chocs/ppob?route=ma">
                           Change <span class="govuk-visually-hidden">principal place of business</span>
                         </a>
                       </dd>
@@ -743,7 +740,7 @@
                       </dd>
                       <dd class="govuk-summary-list__actions">
 
-                        <a href="chocs/overview">
+                        <a href="https://vatvc-prototype.herokuapp.com/3-9-0/chocs/business-numbers?route=ma">
                           Change <span class="govuk-visually-hidden">landline number</span>
                         </a>
                       </dd>
@@ -756,11 +753,14 @@
                         07700 900457
                       </dd>
                       <dd class="govuk-summary-list__actions">
-                        <a href="chocs/overview">
+                        <a href="https://vatvc-prototype.herokuapp.com/3-9-0/chocs/business-numbers-mobile?route=ma">
                           Change <span class="govuk-visually-hidden">mobile number</span>
                         </a>
                       </dd>
                     </div>
+
+                    {% if (data['contactPref'] == "Letter")  %}
+                    {% else %}
 
                     <div class="govuk-summary-list__row">
                       <dt class="govuk-summary-list__key">
@@ -771,14 +771,22 @@
                         {% if (data['emailAddress'] == null)  %}
                         info@abcdigital.com
                         {% else %}
-                        {{data['emailAddress']}}
+                        {% if (data['emailAddress'] == "unverified")  %}
+                        sales@abcdigital.com
+                        <br>
+                        <a href="email/confirmation-email">Resend email verification</a>
+
+                        {% else %}
+
+                        sales@abcdigital.com
+                      {% endif %}
 
                         {% endif %}
 
 
                       </dd>
                       <dd class="govuk-summary-list__actions">
-                        {% if (data['emailAddress'] == null)  %}
+                        {% if (data['emailAddress'] == null) or (data['emailAddress'] == "unverified")  %}
                         <a href="email/business-email?focus=vat">
                         Change <span class="govuk-visually-hidden">email</span>
                       </a>
@@ -790,6 +798,7 @@
 
                       </dd>
                     </div>
+                    {% endif %}
 
 
 
@@ -799,42 +808,35 @@
                       </dt>
 
 
-                      {% if (data['contactPref'] == "Email address")  %}
+                      {% if (data['contactPref'] == "NuLetter")  %}
 
-                      <dd class="govuk-summary-list__value">
+                        <dd class="govuk-summary-list__value">Letter</dd>
+                        <dd class="govuk-summary-list__actions">
+                          <span class="govuk-body govuk-!-font-weight-bold">Pending</span>
+                        </dd>
 
-                        {% if (data['emailAddress'] == null)  %}
-                          accounts@abcdigital.com
+                      {% elseif (data['contactPref'] == "Letter")  %}
 
-                          {% else %}
-                          {{data['emailAddress']}}
+                        <dd class="govuk-summary-list__value">Letter</dd>
+                        <dd class="govuk-summary-list__actions">
 
-                          {% endif %}
-
-
-
-                      </dd>
-                      <dd class="govuk-summary-list__actions">
-
-                        <span class="govuk-body govuk-!-font-weight-bold">Pending</span>
-
-
+                            <a href="choose-preference">
+                              Change
+                            </a>
                       </dd>
 
                       {% else %}
                       <dd class="govuk-summary-list__value">
 
-                      Letter
+                      Email
                     </dd>
                     <dd class="govuk-summary-list__actions">
-                      <a href="add-preference/choose-tax?tax">
+                      <a href="choose-preference">
                         Change
                       </a>
 
                     </dd>
                     {% endif %}
-
-
 
                     </div>
 

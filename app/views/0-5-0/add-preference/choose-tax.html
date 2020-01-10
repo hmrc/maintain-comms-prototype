@@ -19,7 +19,7 @@ Would you like to change contact preferences for other taxes
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form class="form" action=".././choose-preference" method="post">
+    <form class="form" action="confirm-add-preference" method="post">
     <!-- <form method="post" class="form"> -->
     {% if (data['tax'] == "itsa")  %}
 
@@ -33,7 +33,7 @@ Would you like to change contact preferences for other taxes
         legend: {
           text: "Would you like to change contact preferences for other taxes?",
           isPageHeading: true,
-          classes: "govuk-fieldset__legend--xl"
+          classes: "govuk-fieldset__legend--l"
         }
       },
 
@@ -74,12 +74,12 @@ Would you like to change contact preferences for other taxes
         legend: {
           text: "Would you like to change contact preferences for other taxes?",
           isPageHeading: true,
-          classes: "govuk-fieldset__legend--xl"
+          classes: "govuk-fieldset__legend--l"
         }
       },
 
       hint: {
-        text: "You can change your contact preferences for VAT and Self Assessment at the same time."
+        text: "You can change your contact preferences for VAT, PAYE and Self Assessment at the same time."
        },
 
 
