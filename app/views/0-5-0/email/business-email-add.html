@@ -1,63 +1,85 @@
-{% extends "../../layout.html" %}
+{% extends "layout.html" %}
 
-{% block page_title %}
-What is the email address?
+{% block pageTitle %}
+Do you want to change your contact preference
 {% endblock %}
 
+{% block beforeContent %}
+{% include ".././includes/phase.html" %}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
 
 {% block content %}
-<main id="content" role="main">
-{% include "global_includes/phase_banner_beta.html" %}
-  <div class="govuk-body lang-toggle">
 
-  <span>English |&nbsp;</span>
-  <span><a class="govuk-link govuk-body govuk-link--no-visited-state" href="" style="padding-right:0; float:right;">Cymraeg</a></span>
-</div>
-{{ govukBackLink({
-  text: "Back",
-  href: "javascript:history.back()"
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="business-email?emailAddress=&focus=vat" method="post">
+    <!-- <form method="post" class="form"> -->
+
+
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+
+
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  classes: "govuk-radios--inline",
+  idPrefix: "email-add-conditional",
+  name: "email-add",
+  fieldset: {
+    legend: {
+      text: "Do you want to change your contact preference?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  hint: {
+    text: "By providing your email address you will be changing your contact preference from letter to email ."
+  },
+  items: [
+    {
+      value: "Yes",
+      text: "Yes",
+      conditional: {
+        html: yesPrefChange
+      }
+    },
+    {
+      value: "No",
+      text: "No",
+      conditional: {
+        html: noPrefChange
+      }
+    }
+  ]
 }) }}
 
-  <!-- <div class="breadcrumbs">
-    <ol>
-      {% include "./includes/breadcrumb_child.html" %}
-      <li>Choose the new VAT Return dates</li>
-    </ol>
-  </div> -->
-  <div class="grid-row">
-    <div class="column-two-thirds">
 
 
-            <legend>
-                <h1 class="heading-large">What is the email address?</h1>
-                <!-- <p>Only complete this field if you have been told to do so by HMRC.</p> -->
+    {% from "govuk/components/button/macro.njk" import govukButton %}
 
-            </legend>
-
-
-            <form method="post" class="form">
-
-                <fieldset>
+    {{ govukButton({
+      text: "Continue"
+    }) }}
 
 
-            <div class="form-group">
-              <!-- <span class="form-hint">For example, name@example.com</span> -->
-              <!-- <span class="form-hint">We will only use this to notify you of changes to your VAT details.</span> -->
-              <p>We will only use this to notify you of changes to your VAT details.</p>
-
-              <input class="form-control form-control-1-9" id="emailAddress" type="text" name="emailAddress" value="">
-
-            </div>
 
 
-          </fieldset>
 
-            <div class="form-group">
-              <input type="submit" class="button" value="Continue">
-            </div>
-
-      </form>
-
+    </form>
   </div>
-</main>
-{% endblock %}
+</div>
+
+
+
+
+
+  {% endblock %}
