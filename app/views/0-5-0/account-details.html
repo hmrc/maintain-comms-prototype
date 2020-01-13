@@ -200,7 +200,7 @@
                         <dd class="govuk-summary-list__value">Letter</dd>
                         <dd class="govuk-summary-list__actions">
 
-                            <a href="choose-preference">
+                            <a href="choose-preference?tax=itsa"">
                               Change
                             </a>
                       </dd>
@@ -211,7 +211,7 @@
                       Email
                     </dd>
                     <dd class="govuk-summary-list__actions">
-                      <a href="choose-preference">
+                      <a href="choose-preference?tax=itsa">
                         Change
                       </a>
 
@@ -765,6 +765,10 @@
                     <div class="govuk-summary-list__row">
                       <dt class="govuk-summary-list__key">
                         Email
+                        {% if (data['emailAddress'] == "unverified")  %}
+                        <span class="hmrc-notification-badge">1</span>
+                        {% endif %}
+
                       </dt>
                       <dd class="govuk-summary-list__value">
 

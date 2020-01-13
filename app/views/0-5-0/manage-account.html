@@ -94,7 +94,9 @@
 
         <a class="govuk-link govuk-body govuk-link--no-visited-state" href="account-details">
           View or change your account details
+          {% if (data['emailAddress'] == "unverified")  %}
           <span class="hmrc-notification-badge">1</span>
+          {% endif %}
 
         </a>
       </div>

@@ -133,7 +133,19 @@
           <a href="https://vatvc-prototype.herokuapp.com/3-9-0/your-vat-details">View your VAT account</a>
           {% endif %}
 
-        </p>
+          {% if (data['emailAddress'] == "unverified")  %}
+
+          <div class="govuk-inset-text">
+                You need to verify your email address. <a href="confirmation-email">Resend the email</a> to verify it.
+            </div>
+            {% elseif BTAuser == "nudge-unusable-email" %}
+
+            <div class="govuk-inset-text">
+                UNUSABLE EMAIL ADDRESS. <a href="confirmation-email">Confirm</a> to verify it.
+            </div>
+
+            {% endif %}
+
       </div>
   </div>
 

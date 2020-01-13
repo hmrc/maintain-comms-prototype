@@ -27,6 +27,19 @@ How would you prefer to be contacted?
           </h1>
         </legend>
 
+        {% if (data['tax'] == "itsa")  %}
+
+          {% if (data['contactPref'] == "Letter")  %}
+          <span id="changed-name-hint" class="govuk-hint">
+            You are currently contacted by letter for Self Assessment
+          </span>
+          {% else %}
+          <span id="changed-name-hint" class="govuk-hint">
+            You are currently contacted by email for Self Assessment at sales@abcdigital.com
+          </span>
+          {% endif %}
+        {% else %}
+
         {% if (data['contactPref'] == "Letter")  %}
         <span id="changed-name-hint" class="govuk-hint">
           You are currently contacted by letter for VAT
@@ -35,6 +48,7 @@ How would you prefer to be contacted?
         <span id="changed-name-hint" class="govuk-hint">
           You are currently contacted by email for VAT at sales@abcdigital.com
         </span>
+        {% endif %}
         {% endif %}
 
 

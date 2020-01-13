@@ -24,10 +24,6 @@
 
 
 
-
-
-      {% if (data['emailAddress'] == null)  %}
-
       {{ govukInput({
         label: {
           text: "What is the email address?",
@@ -38,36 +34,12 @@
           text: "For example, name@example.com"
         },
         classes: "govuk-!-width-one-half",
-        id: "emailAddress",
-        value: "info@abcdigital.com",
-        name: "emailAddress"
+        id: "emailPref",
+        value: "",
+        name: "emailPref"
       }) }}
 
 
-        {% else %}
-
-
-        <div class="govuk-form-group">
-
-        <fieldset class="govuk-fieldset">
-          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-            <h1 class="govuk-fieldset__heading">
-              What is the email address?
-            </h1>
-          </legend>
-
-          <span id="email-hint" class="govuk-hint">
-            For example, name@example.com
-          </span>
-          <input value="{{data['emailAddress']}}" class="govuk-input govuk-!-width-one-half" id="emailAddress" name="emailAddress" type="emailAddress" aria-describedby="email-hint" autocomplete="email" spellcheck="false">
-
-
-        </fieldset>
-
-        </div>
-
-
-        {% endif %}
         {% from "govuk/components/button/macro.njk" import govukButton %}
 
         {{ govukButton({
