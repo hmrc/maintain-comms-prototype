@@ -127,13 +127,13 @@
 
         <p style="margin-bottom: 0">
           {% if (data['emailAddress'] == "unverified")  %}
-          <a href="  https://vatvc-prototype.herokuapp.com/3-9-0/your-vat-details?BTAuser=nudge-verify">View your VAT account</a>
+          <a href="https://vatvc-prototype.herokuapp.com/3-9-0/your-vat-details?BTAuser=nudge-verify">View your VAT account</a>
 
         {% else %}
           <a href="https://vatvc-prototype.herokuapp.com/3-9-0/your-vat-details">View your VAT account</a>
           {% endif %}
 
-          {% if (data['emailAddress'] == "unverified")  %}
+          <!-- {% if (data['emailAddress'] == "unverified")  %}
 
           <div class="govuk-inset-text">
                 You need to verify your email address. <a href="confirmation-email">Resend the email</a> to verify it.
@@ -144,7 +144,7 @@
                 UNUSABLE EMAIL ADDRESS. <a href="confirmation-email">Confirm</a> to verify it.
             </div>
 
-            {% endif %}
+            {% endif %} -->
 
       </div>
   </div>

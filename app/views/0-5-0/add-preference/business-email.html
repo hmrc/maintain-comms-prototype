@@ -24,21 +24,24 @@
 
 
 
-      {{ govukInput({
-        label: {
-          text: "What is the email address?",
-          isPageHeading: true,
-          classes: "govuk-label--l"
-        },
-        hint: {
-          text: "Full details of how we use the your information are in HMRC Privacy Notice"
-        },
-        classes: "govuk-!-width-one-half",
-        id: "emailPref",
-        value: "",
-        name: "emailPref"
-      }) }}
+      <div class="govuk-form-group">
 
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <h1 class="govuk-fieldset__heading">
+            What is the email address?
+          </h1>
+        </legend>
+
+        <span id="email-hint" class="govuk-hint">
+          Full details of how we use the your information are in <a href="">HMRC Privacy Notice</a>
+        </span>
+        <input value="" class="govuk-input govuk-!-width-one-half" id="emailPref" name="emailPref" type="emailPref" aria-describedby="email-hint" autocomplete="email" spellcheck="false">
+
+
+      </fieldset>
+
+      </div>
 
         {% from "govuk/components/button/macro.njk" import govukButton %}
 
