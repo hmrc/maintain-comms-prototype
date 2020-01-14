@@ -56,7 +56,7 @@ Contact preference updated
 
             {% else %}
         <p class="govuk-body">
-          From now on we will contact you about your VAT through sales@abcdigital.com.
+          From now on we will contact you about your VAT through info@abcdigital.com.
           </p>
           <p class="govuk-body">
             In some cases we'll need to send you letters because the law requires it.
@@ -69,11 +69,22 @@ Contact preference updated
 
       {% from "govuk/components/button/macro.njk" import govukButton %}
 
+      {% if (data['contactPref'] == "Letter")  %}
       {{ govukButton({
         text: "View your account details",
         href: "./account-details",
         isStartButton: false
       }) }}
+
+      {% else %}
+      {{ govukButton({
+        text: "View your account details",
+        href: "./account-details?contactPref=newEmail",
+        isStartButton: false
+      }) }}
+
+      {% endif %}
+
 
     </div>
   </div>
