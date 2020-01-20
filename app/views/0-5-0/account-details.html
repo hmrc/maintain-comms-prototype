@@ -156,7 +156,7 @@
                       <dd class="govuk-summary-list__value">
 
                         {% if (data['emailAddress'] == null)  %}
-                        Not provided
+                        sales@abcdigital.com
                         {% else %}
                         {% if (data['emailAddress'] == "unverified")  %}
                         sales@abcdigital.com
@@ -174,9 +174,13 @@
                       </dd>
                       <dd class="govuk-summary-list__actions">
                         {% if (data['emailAddress'] == null) %}
-                        <a href="email/business-email-add?emailAddress=&focus=vat">
+                        <!-- <a href="email/business-email-add?emailAddress=&focus=vat">
                         Add <span class="govuk-visually-hidden">email</span>
-                      </a>
+                      </a> -->
+
+                      <a href="#">
+                      Change <span class="govuk-visually-hidden">email</span>
+                    </a>
                           {% elseif (data['emailAddress'] == "unverified")  %}
 
                           <a href="email/business-email?focus=vat">
@@ -263,15 +267,6 @@
                       </dd>
 
 
-                      {% elseif (data['contactPref'] == "Letter")  %}
-
-                        <dd class="govuk-summary-list__value">Letter</dd>
-                        <dd class="govuk-summary-list__actions">
-
-                            <a href="choose-preference?tax=itsa"">
-                              Change
-                            </a>
-                      </dd>
 
                       {% else %}
                       <dd class="govuk-summary-list__value">

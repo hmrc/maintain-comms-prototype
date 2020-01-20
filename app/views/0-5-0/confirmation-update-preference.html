@@ -27,7 +27,7 @@ Contact preference updated
       {% else %}
 
       {{ govukPanel({
-        titleText: "Contact preference updated",
+        titleText: "Contact preference updated for VAT",
         html: " "
       }) }}
       {% endif %}
@@ -38,7 +38,7 @@ Contact preference updated
 
 
 
-        {% if (data['contactPref'] == "Letter")  %}
+        <!-- {% if (data['contactPref'] == "Letter")  %}
 
         <p class="govuk-body">
           From now on you will receive letters for your VAT to your address;</p>
@@ -49,11 +49,6 @@ Contact preference updated
 
           </p>
 
-
-
-
-
-
             {% else %}
         <p class="govuk-body">
           From now on we will contact you about your VAT through info@abcdigital.com.
@@ -62,8 +57,14 @@ Contact preference updated
             In some cases we'll need to send you letters because the law requires it.
         </p>
 
-        {% endif %}
+        {% endif %} -->
 
+        <p class="govuk-body">
+          From now on we will contact you about your VAT through info@abcdigital.com.
+          </p>
+          <p class="govuk-body">
+            In some cases we'll need to send you letters because the law requires it.
+        </p>
 
         <h3 class="govuk-heading-s">Direct Debits</h3>
         <p>If you want to use this email for your direct debit notifications,
@@ -72,7 +73,7 @@ Contact preference updated
 
       {% from "govuk/components/button/macro.njk" import govukButton %}
 
-      {% if (data['contactPref'] == "Letter")  %}
+      <!-- {% if (data['contactPref'] == "Letter")  %}
       {{ govukButton({
         text: "View your account details",
         href: "./account-details",
@@ -86,7 +87,13 @@ Contact preference updated
         isStartButton: false
       }) }}
 
-      {% endif %}
+      {% endif %} -->
+
+      {{ govukButton({
+        text: "View your account details",
+        href: "./account-details?contactPref=newEmail",
+        isStartButton: false
+      }) }}
 
 
     </div>

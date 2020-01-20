@@ -44,6 +44,13 @@
 
  <!-- <p style="margin-top:100px"><a href="confirmation-preferences?emailUpdating=true">Skip email verification (for test purposes only)</a></p> -->
 
+ {% if (data['contactPref'] == "Letter")  %}
+ <p style="margin-top:100px"><a href="../confirmation-update-preference">Skip email verification (for test purposes only)</a></p>
+
+ {% else %}
  <p style="margin-top:100px"><a href="confirmation-preferences">Skip email verification (for test purposes only)</a></p>
+
+ {% endif %}
+
 
 {% endblock %}
