@@ -2,7 +2,6 @@
 
   <a href="business-tax-account">Home</a>
 
-  <a href="messages">Messages</a>
   {% if (data['emailAddress'] == "unverified")  %}
   <a href="manage-account?emailAddress=unverified">Manage account
     <span class="hmrc-notification-badge">1</span>
@@ -11,6 +10,7 @@
 
   <a href="manage-account">Manage account</a>
   {% endif %}
+  <a href="messages">Messages</a>
 
 
   <a href="#">Help and contact</a>

@@ -161,7 +161,7 @@
                         {% if (data['emailAddress'] == "unverified")  %}
                         sales@abcdigital.com
                         <br>
-                        <a href="email/confirmation-email">Resend email verification</a>
+                        <a href="email/confirmation-email">Verify your email</a>
 
                         {% else %}
 
@@ -209,7 +209,7 @@
                         {% if (data['emailAddress'] == "unverified")  %}
                         sales@abcdigital.com
                         <br>
-                        <a href="email/confirmation-email">Resend email verification</a>
+                        <a href="email/confirmation-email">Verify your email</a>
 
                         {% else %}
 
@@ -595,6 +595,11 @@
                                         <div class="govuk-summary-list__row">
                                           <dt class="govuk-summary-list__key">
                                             Communication email
+
+                                            {% if (data['emailAddress'] == "unverified")  %}
+                                            <span class="hmrc-notification-badge">1</span>
+                                            {% endif %}
+
                                           </dt>
                                           <dd class="govuk-summary-list__value">
 
@@ -605,7 +610,7 @@
                                             {% elseif (data['emailAddress'] == "unverified")  %}
                                             sales@abcdigital.com
                                             <br>
-                                            <a href="email/confirmation-email">Resend email verification</a>
+                                            <a href="email/confirmation-email">Verify your email</a>
 
                                             {% else %}
 
@@ -851,7 +856,7 @@
                         {% if (data['emailAddress'] == "unverified")  %}
                         sales@abcdigital.com
                         <br>
-                        <a href="email/confirmation-email">Resend email verification</a>
+                        <a href="email/confirmation-email">Verify your email</a>
 
                         {% else %}
 
@@ -901,7 +906,7 @@
                         {% if (data['emailAddress'] == "unverified")  %}
                         sales@abcdigital.com
                         <br>
-                        <a href="email/confirmation-email">Resend email verification</a>
+                        <a href="email/confirmation-email">Verify your email</a>
 
                         {% else %}
 
