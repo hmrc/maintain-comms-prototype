@@ -174,7 +174,7 @@
                       </dd>
                       <dd class="govuk-summary-list__actions">
                         {% if (data['emailAddress'] == null) %}
-                        <!-- <a href="email/business-email-add?emailAddress=&focus=vat">
+                        <!-- <a href="email/business-email-add?emailAddress=&tax=vat">
                         Add <span class="govuk-visually-hidden">email</span>
                       </a> -->
 
@@ -183,7 +183,7 @@
                     </a>
                           {% elseif (data['emailAddress'] == "unverified")  %}
 
-                          <a href="email/business-email?focus=vat">
+                          <a href="email/business-email?tax=vat">
                           Change <span class="govuk-visually-hidden">email</span>
                         </a>
                             {% else %}
@@ -226,7 +226,7 @@
                       </dd>
                       <dd class="govuk-summary-list__actions">
                         {% if (data['emailAddress'] == null) or (data['emailAddress'] == "unverified")  %}
-                        <a href="email/business-email?focus=itsa">
+                        <a href="email/business-email?tax=itsa">
                         Change <span class="govuk-visually-hidden">email</span>
                       </a>
                           {% else %}
@@ -864,12 +864,12 @@
                       </dd>
                       <dd class="govuk-summary-list__actions">
                         {% if (data['emailAddress'] == null) %}
-                        <a href="email/business-email-add?emailAddress=&focus=vat">
+                        <a href="email/business-email-add?emailAddress=&tax=vat">
                         Add <span class="govuk-visually-hidden">email</span>
                       </a>
                           {% elseif (data['emailAddress'] == "unverified")  %}
 
-                          <a href="email/business-email?focus=vat">
+                          <a href="email/business-email?tax=vat">
                           Change <span class="govuk-visually-hidden">email</span>
                         </a>
                             {% else %}
@@ -916,7 +916,7 @@
                         {% if (data['contactPref'] == "newEmail")  %}
                         <span class="govuk-body govuk-!-font-weight-bold">Pending</span>
                         {% elseif (data['emailAddress'] == null) or (data['emailAddress'] == "unverified")  %}
-                        <a href="email/business-email?focus=vat">
+                        <a href="email/business-email?tax=vat">
                         Change <span class="govuk-visually-hidden">email</span>
                       </a>
                           {% else %}
