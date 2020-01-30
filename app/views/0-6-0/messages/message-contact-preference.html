@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  You have successfully changed your contact preferences for VAT
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% include ".././includes/phase.html" %}
+
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:history.back()"
+}) }}
+
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+<h1 class="govuk-heading-xl">Message detail</h1>
+
+
+      <h2 class="govuk-heading-l">You have successfully changed your contact preferences for VAT</h2>
+
+    <p>
+      <span class="form-hint">
+        This message was sent to you on 03 October 2018
+      </span>
+    </p>
+
+
+
+
+             {% if (data['contactPref'] == "Primary email address")  %}
+             <p class="govuk-body">
+               From now on you will receive updates for your VAT through your primary email address {{data['emailAddress']}}.
+               </p>
+               <p class="govuk-body">
+                 In some cases we'll need to send you letters because the law requires it.
+             </p>
+             {% elseif (data['contactPref'] == "Letter") %}
+             <p class="govuk-body">
+               From now on you will receive updates for your VAT through letter.
+               </p>
+               {% else %}
+               <p class="govuk-body">
+                 From now on you will receive updates for your VAT through SMS.
+                 </p>
+                 <p class="govuk-body">
+                   In some cases we'll need to send you letters because the law requires it.
+               </p>
+             {% endif %}
+
+
+
+
+
+
+</div>
+
+</div>
+
+{% endblock %}

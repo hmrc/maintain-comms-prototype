@@ -1,0 +1,116 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check your answer
+{% endblock %}
+
+{% block beforeContent %}
+{% include ".././includes/phase.html" %}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="confirmation-email" method="post">
+      <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Check your answer
+              </h1>
+            </legend>
+
+            <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+
+{% if (data['email-add'] != null)  %}
+
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Change preference
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  Yes
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="business-email-add?emailAddress=&focus=vat">
+                    Change<span class="govuk-visually-hidden"> direct debit use</span>
+                  </a>
+                </dd>
+              </div>
+              {% endif %}
+
+                      <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                          Email address
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                          {{data['emailAddress']}}
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                          <a class="govuk-link" href="business-email?focus=vat">
+                            Change<span class="govuk-visually-hidden"> email address</span>
+                        </a>
+
+                        </dd>
+                      </div>
+
+
+
+                      <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                          For which taxes
+
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                          <!-- VAT, PAYE, Self Assessment -->
+{{data['emailTax']}}
+
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                          <a class="govuk-link" href="choose-tax">
+                            Change<span class="govuk-visually-hidden"> taxes</span>
+                          </a>
+                        </dd>
+
+                      </div>
+                    </dl>
+
+<!--
+              <p>
+                The new email address is
+                {% if (data['emailAddress'] == null)  %}
+              accounts@abcdigital.com
+                {% else %}
+                {{data['emailAddress']}}
+                {% endif %}
+              </p>
+
+              <p><a href="./business-email">Change the email address</a></p> -->
+
+
+              {% from "govuk/components/button/macro.njk" import govukButton %}
+
+
+              {{ govukButton({
+                text: "Confirm and continue"
+              }) }}
+            </fieldset>
+            </div>
+      </form>
+
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}

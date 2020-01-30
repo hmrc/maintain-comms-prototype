@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+VAT messages
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% include ".././includes/phase.html" %}
+
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:history.back()"
+}) }}
+
+
+{% endblock %}
+
+{% block content %}
+
+
+
+<h1 class="govuk-heading-xl">VAT Messages</h1>
+ <p class="govuk-body-l">This inbox contains messages about Making Tax Digital for VAT.</p>
+
+
+ <table class="govuk-table messages">
+
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header app-custom-class">Subject</th>
+      <th scope="col" class="govuk-table__header app-custom-class">Tax</th>
+      <th scope="col" class="govuk-table__header app-custom-class">Date</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header"><a class="govuk-!-font-weight-bold" href="message-contact-preference">You have successfully changed your contact preferences for VAT</a></th>
+      <td class="govuk-table__cell">VAT</td>
+      <td class="govuk-table__cell">3 October 2019</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">You have signed up to Making Tax Digital</th>
+      <td class="govuk-table__cell">VAT</td>
+      <td class="govuk-table__cell">23 January 2019</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">File your next VAT return</th>
+      <td class="govuk-table__cell">VAT</td>
+      <td class="govuk-table__cell">16 January 2019</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+ <!-- <div class="form-group">
+    <h3 class="govuk-heading-s">Other inboxes</h3>
+    <p>You should also check for messages in your other inboxes.</p>
+    <p><a href="#" target="_blank">Account messages (opens in a new tab)</a> - includes helpdesk replies</p>
+    <p><a href="#" target="_blank">VAT MOSS and NOVA messages (opens in a new tab)</a> - includes VAT MOSS and NOVA messages</p>
+    <p><a href="#">PAYE for employers messages (opens in a new window or tab)</a></p>
+ </div> -->
+
+
+     <div class="form-group">
+      <a class="font-xsmall" href="#">Is there anything wrong with this page?</a>
+ </div>
+
+
+
+{% endblock %}

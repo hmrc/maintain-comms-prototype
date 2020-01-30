@@ -1,0 +1,99 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  What is the email address
+{% endblock %}
+
+{% block beforeContent %}
+{% include ".././includes/phase.html" %}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="choose-tax" method="post">
+    <!-- <form method="post" class="form"> -->
+
+
+
+
+
+      {% if (data['emailAddress'] == null)  %}
+
+
+
+      <div class="govuk-form-group">
+
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <h1 class="govuk-fieldset__heading">
+            What is the email address?
+          </h1>
+        </legend>
+
+        <span id="email-hint" class="govuk-hint">
+          HMRC will use your email address to notify you of changes to your VAT details. Full details are in the <a target="_blank" href="https://www.gov.uk/government/publications/data-protection-act-dpa-information-hm-revenue-and-customs-hold-about-you/data-protection-act-dpa-information-hm-revenue-and-customs-hold-about-you">HMRC Privacy Notice (opens in a new window or tab)</a>
+
+        </span>
+        <input value="info@abcdigital.com" class="govuk-input govuk-!-width-one-half" id="emailAddress" name="emailAddress" type="emailAddress" aria-describedby="email-hint" autocomplete="email" spellcheck="false">
+
+
+      </fieldset>
+
+
+
+      </div>
+      <div class="govuk-form-group">
+
+      <!-- <p>
+        Full details are in <a target="_blank" href="https://www.gov.uk/government/publications/data-protection-act-dpa-information-hm-revenue-and-customs-hold-about-you/data-protection-act-dpa-information-hm-revenue-and-customs-hold-about-you">HMRC Privacy Notice (opens in a new window or tab)</a>
+      </p> -->
+    </div>
+
+        {% else %}
+
+
+        <div class="govuk-form-group">
+
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              What is the email address?
+            </h1>
+          </legend>
+
+          <span id="email-hint" class="govuk-hint">
+            HMRC will use your email address to notify you of changes to your VAT details. Full details are in the <a target="_blank" href="https://www.gov.uk/government/publications/data-protection-act-dpa-information-hm-revenue-and-customs-hold-about-you/data-protection-act-dpa-information-hm-revenue-and-customs-hold-about-you">HMRC Privacy Notice (opens in a new window or tab)</a>
+          </span>
+          <input value="{{data['emailAddress']}}" class="govuk-input govuk-!-width-one-half" id="emailAddress" name="emailAddress" type="emailAddress" aria-describedby="email-hint" autocomplete="email" spellcheck="false">
+
+
+        </fieldset>
+
+        </div>
+
+
+        {% endif %}
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+    </form>
+  </div>
+</div>
+
+
+
+
+
+  {% endblock %}
