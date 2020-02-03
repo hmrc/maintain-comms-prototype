@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-New contact details submitted
+Your email address has been reset
 {% endblock %}
 
 {% block beforeContent %}
@@ -21,14 +21,14 @@ New contact details submitted
       {% if (data['contactPref'] == "Letter")  %}
 
       {{ govukPanel({
-        titleText: "Updated contact details received",
+        titleText: "Your email address has been reset",
         html: " "
       }) }}
 
       {% else %}
 
       {{ govukPanel({
-        titleText: "Updated contact details received",
+        titleText: "Your email address has been reset",
         html: " "
       }) }}
       {% endif %}
@@ -39,10 +39,7 @@ New contact details submitted
       <h2 class="govuk-heading-m">What happens next</h2>
 
       <p class="govuk-body">
-        If your email address is accepted, we'll send you an email within 2 working days.
-        <!-- You can also check your HMRC secure messages for an update. -->
-
-          In some cases we'll need to send you letters because the law requires it.
+        You will continue to receive updates about your VAT account by email. In some cases we'll need to send you letters because the law requires it.
       </p>
 
 
