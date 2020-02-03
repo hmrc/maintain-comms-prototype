@@ -73,7 +73,6 @@ module.exports = function (router) {
            req.session.user = req.body.path;
            req.session.email = req.body.email;
            req.session.emailUpdating = true;
-
              res.redirect(301, '/' + version + '/email/confirmation-email');
          });
 

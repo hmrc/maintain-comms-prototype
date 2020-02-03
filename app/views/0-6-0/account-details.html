@@ -46,7 +46,7 @@
     {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 
 
-    {% if (data['emailAddress'] == null) or (data['emailAddress'] == "unverified")  %}
+    {% if (data['emailAddress'] == null) or (data['emailAddress'] == "unverified") or (data['emailAddress'] == "unusable") %}
 
     {% else %}
 
@@ -213,8 +213,8 @@
                     <div class="govuk-summary-list__row">
                       <dt class="govuk-summary-list__key">
                         Email
-                        {% if (data['emailAddress'] == "unverified")  %}
-                        <span class="hmrc-notification-badge">1</span>
+                        {% if (data['emailAddress'] == null) or (data['emailAddress'] == "unverified") or (data['emailAddress'] == "unusable") %}
+                        <span class="hmrc-notification-badge">!</span>
                         {% endif %}
 
                       </dt>
@@ -223,7 +223,7 @@
                         {% if (data['emailAddress'] == null)  %}
                         sales@abcdigital.com
                         {% else %}
-                        {% if (data['emailAddress'] == "unverified")  %}
+                        {% if (data['emailAddress'] == null) or (data['emailAddress'] == "unverified") or (data['emailAddress'] == "unusable") %}
                         sales@abcdigital.com
                         <br>
                         <a href="email/confirmation-email">Verify your email</a>
@@ -246,7 +246,7 @@
                       <a href="#">
                       Change <span class="govuk-visually-hidden">email</span>
                     </a>
-                          {% elseif (data['emailAddress'] == "unverified")  %}
+                          {% elseif (data['emailAddress'] == "unverified") or (data['emailAddress'] == "unusable")  %}
 
                           <a href="email/business-email?tax=vat">
                           Change <span class="govuk-visually-hidden">email</span>
@@ -265,8 +265,8 @@
                     <div class="govuk-summary-list__row">
                       <dt class="govuk-summary-list__key">
                         Email
-                        {% if (data['emailAddress'] == "unverified")  %}
-                        <span class="hmrc-notification-badge">1</span>
+                        {% if (data['emailAddress'] == "unverified") or (data['emailAddress'] == "unusable")  %}
+                        <span class="hmrc-notification-badge">!</span>
                         {% endif %}
 
                       </dt>
@@ -280,6 +280,11 @@
                         <br>
                         <a href="email/confirmation-email">Verify your email</a>
 
+                        {% elseif (data['emailAddress'] == "unusable")  %}
+                        sales@abcdigital.com
+                        <br>
+                        <a href="email/confirmation-usable">Unusable email</a>
+
                         {% else %}
 
                         {{data['emailAddress']}}
@@ -290,7 +295,7 @@
 
                       </dd>
                       <dd class="govuk-summary-list__actions">
-                        {% if (data['emailAddress'] == null) or (data['emailAddress'] == "unverified")  %}
+                        {% if (data['emailAddress'] == null) or (data['emailAddress'] == "unverified") or (data['emailAddress'] == "unusable")  %}
                         <a href="email/business-email?tax=itsa">
                         Change <span class="govuk-visually-hidden">email</span>
                       </a>
@@ -656,8 +661,8 @@
                                           <dt class="govuk-summary-list__key">
                                             Communication email
 
-                                            {% if (data['emailAddress'] == "unverified")  %}
-                                            <span class="hmrc-notification-badge">1</span>
+                                            {% if (data['emailAddress'] == null) or (data['emailAddress'] == "unverified") or (data['emailAddress'] == "unusable")  %}
+                                            <span class="hmrc-notification-badge">!</span>
                                             {% endif %}
 
                                           </dt>
@@ -672,6 +677,11 @@
                                             <br>
                                             <a href="email/confirmation-email">Verify your email</a>
 
+                                            {% elseif (data['emailAddress'] == "unusable")  %}
+                                            sales@abcdigital.com
+                                            <br>
+                                            <a href="email/confirmation-usable">Unusable email</a>
+
                                             {% else %}
 
                                             {{data['emailAddress']}}
@@ -680,7 +690,7 @@
                                           </dd>
 
                                           <dd class="govuk-summary-list__actions">
-                                            {% if (data['emailAddress'] == null) or (data['emailAddress'] == "unverified")  %}
+                                            {% if (data['emailAddress'] == null) or (data['emailAddress'] == "unverified") or (data['emailAddress'] == "unusable")  %}
 
                                             <a href="email/business-email?tax=paye">
                                             Change <span class="govuk-visually-hidden">email</span>
@@ -903,8 +913,8 @@
                     <div class="govuk-summary-list__row">
                       <dt class="govuk-summary-list__key">
                         Email
-                        {% if (data['emailAddress'] == "unverified")  %}
-                        <span class="hmrc-notification-badge">1</span>
+                        {% if (data['emailAddress'] == "unverified") or (data['emailAddress'] == "unusable")  %}
+                        <span class="hmrc-notification-badge">!</span>
                         {% endif %}
 
                       </dt>
@@ -917,6 +927,11 @@
                         sales@abcdigital.com
                         <br>
                         <a href="email/confirmation-email">Verify your email</a>
+
+                        {% elseif (data['emailAddress'] == "unusable")  %}
+                        sales@abcdigital.com
+                        <br>
+                        <a href="email/confirmation-usable">Unusable email</a>
 
                         {% else %}
 
@@ -932,7 +947,7 @@
                         <a href="email/business-email-add?emailAddress=&tax=vat">
                         Add <span class="govuk-visually-hidden">email</span>
                       </a>
-                          {% elseif (data['emailAddress'] == "unverified")  %}
+                          {% elseif (data['emailAddress'] == "unverified") or (data['emailAddress'] == "unusable")  %}
 
                           <a href="email/business-email?tax=vat">
                           Change <span class="govuk-visually-hidden">email</span>
@@ -952,8 +967,8 @@
                     <div class="govuk-summary-list__row">
                       <dt class="govuk-summary-list__key">
                         Email
-                        {% if (data['emailAddress'] == "unverified")  %}
-                        <span class="hmrc-notification-badge">1</span>
+                        {% if (data['emailAddress'] == "unverified") or (data['emailAddress'] == "unusable") %}
+                        <span class="hmrc-notification-badge">!</span>
                         {% endif %}
 
                       </dt>
@@ -968,8 +983,12 @@
                         <br>
                         <a href="email/confirmation-email">Verify your email</a>
 
-                        {% else %}
+                        {% elseif (data['emailAddress'] == "unusable")  %}
+                        sales@abcdigital.com
+                        <br>
+                        <a href="email/confirmation-usable">Unusable email</a>
 
+                        {% else %}
                         {{data['emailAddress']}}
                       {% endif %}
 
@@ -980,7 +999,7 @@
                       <dd class="govuk-summary-list__actions">
                         {% if (data['contactPref'] == "newEmail")  %}
                         <span class="govuk-body govuk-!-font-weight-bold">Pending</span>
-                        {% elseif (data['emailAddress'] == null) or (data['emailAddress'] == "unverified")  %}
+                        {% elseif (data['emailAddress'] == null) or (data['emailAddress'] == "unverified") or (data['emailAddress'] == "unusable")  %}
                         <a href="email/business-email?tax=vat">
                         Change <span class="govuk-visually-hidden">email</span>
                       </a>

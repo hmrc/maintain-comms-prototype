@@ -94,15 +94,25 @@
 
         <a class="govuk-link govuk-body govuk-link--no-visited-state" href="account-details">
           View or change your account details
-          {% if (data['emailAddress'] == "unverified")  %}
-          <span class="hmrc-notification-badge">1</span>
+          {% if (data['emailAddress'] == "unverified") or (data['emailAddress'] == "unusable")  %}
+          <span class="hmrc-notification-badge">!</span>
           {% endif %}
 
         </a>
       </div>
-      <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-7">
-        <a class="govuk-link govuk-body govuk-link--no-visited-state" href="https://bas-verification.herokuapp.com/beta-2-1/manage_accounts/profile?source=personal&userid=0&profile_redirect=/beta-2-1/new-registration/pta/dashboard">
-          Make changes to your Government Gateway details
+
+
+
+
+      <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-4">
+        <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-5">
+        <h2 class="govuk-heading-s">Direct Debit</h2>
+
+
+
+        <a class="govuk-link govuk-body govuk-link--no-visited-state" href="#">
+          View or change your Direct Debit details
+
         </a>
       </div>
 
