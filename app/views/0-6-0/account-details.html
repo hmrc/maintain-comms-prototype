@@ -81,6 +81,10 @@
     <!--   * `govuk-summary-list__keys-long` for long questions -->
     <!--   * none for single group of q&a -->
 
+    <h2 class="govuk-heading-l">
+
+  Government Gateway details
+  </h2>
 
   <dl class="govuk-summary-list govuk-!-margin-bottom-9">
       <div class="govuk-summary-list__row">
@@ -91,7 +95,7 @@
 
         </dd>
         <dd class="govuk-summary-list__actions">
-          <a href="business-name">
+          <a href="https://bas-verification.herokuapp.com/Live-5/manage_accounts/profile?source=personal&userid=0&profile_redirect=/Live/new-registration/pta/dashboard">
             Manage your Government Gateway details <span class="govuk-visually-hidden">company name</span>
           </a>
         </dd>
@@ -106,7 +110,7 @@
 
         </dd>
         <dd class="govuk-summary-list__actions">
-          <a href="#">
+          <a href="https://bas-verification.herokuapp.com/Live-5/manage_accounts/profile?source=personal&userid=0&profile_redirect=/Live/new-registration/pta/dashboard">
             View or change email address <span class="govuk-visually-hidden">registered address</span>
           </a>
         </dd>
@@ -120,7 +124,7 @@
 
         </dd>
         <dd class="govuk-summary-list__actions">
-          <a href="#">
+          <a href="https://bas-verification.herokuapp.com/Live-5/manage_accounts/profile?source=personal&userid=0&profile_redirect=/Live/new-registration/pta/dashboard">
             Manage paperless notificationsManage paperless notifications <span class="govuk-visually-hidden">contact name</span>
           </a>
         </dd>
@@ -661,7 +665,7 @@
                                           <dt class="govuk-summary-list__key">
                                             Communication email
 
-                                            {% if (data['emailAddress'] == null) or (data['emailAddress'] == "unverified") or (data['emailAddress'] == "unusable")  %}
+                                            {% if (data['emailAddress'] == "unverified") or (data['emailAddress'] == "unusable")  %}
                                             <span class="hmrc-notification-badge">!</span>
                                             {% endif %}
 
@@ -1065,6 +1069,33 @@
                     {% endif %}
 
                     </div>
+
+
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Website address
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        www.abcdigital.com
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+
+
+
+
+
+                          <a href="https://vatvc-prototype.herokuapp.com/3-9-0/chocs/business-website?route=ma">
+                            Change <span class="govuk-visually-hidden">business website</span>
+                          </a>
+
+
+
+
+
+
+                      </dd>
+                    </div>
+
 
                   </dl>
 
