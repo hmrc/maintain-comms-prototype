@@ -47,11 +47,21 @@
 
         <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-4">
 
-
+          {% if (data['emailAddress'] == "unverified") %}
 
           <div class="govuk-inset-text">
           You need to verify your email address. <a href="confirmation-email">Resend the email</a> to verify it
-</div>
+        </div>
+        {% endif %}
+
+
+        {% if (data['emailAddress'] == "unusable")  %}
+
+        <div class="govuk-inset-text">
+          Your email address is unusable <a href="https://maintain-comms.herokuapp.com/0-6-0/email/confirmation-usable">Reset your email</a>.
+      </div>
+
+      {% endif %}
 
         <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-5">
 
