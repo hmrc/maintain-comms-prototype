@@ -1,0 +1,1151 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Account details
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% include "./includes/phase.html" %}
+
+
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Manage Account",
+      href: "manage-account"
+    },
+    {
+      text: "Account details"
+    }
+  ]
+}) }}
+
+{% endblock %}
+
+{% block content %}
+
+
+
+    <h1 class="govuk-heading-xl">
+      Account details
+    </h1>
+
+
+
+  <div class="govuk-grid-column-three-thirds">
+
+
+    {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+
+    {% if (data['emailAddress'] == "unverified") %}
+
+    <div class="govuk-inset-text">
+    You need to verify your email address. <a href="confirmation-email">Resend the email</a> to verify it
+  </div>
+  {% endif %}
+
+
+  {% if (data['emailAddress'] == "unusable")  %}
+
+  <div class="govuk-inset-text">
+    Your email address is unusable <a href="https://maintain-comms.herokuapp.com/0-6-0/email/confirmation-usable">Reset your email</a>.
+</div>
+
+{% endif %}
+
+    {% if (data['emailAddress'] == null) or (data['emailAddress'] == "unverified") or (data['emailAddress'] == "unusable") %}
+
+    {% else %}
+
+      {% if (data['contactPref'] == "Email address")  %}
+
+      {{ govukInsetText({
+        html: "You recently updated your contact preferences for VAT, PAYE and VAT.<br>
+        If you wish to update your details for <strong>Corporation Tax</strong>, you will need to do that separately."
+      }) }}
+
+      {% else %}
+
+      {{ govukInsetText({
+        html: "You recently updated your details for Self Assessment, PAYE and VAT.<br>
+        If you wish to update your details for <strong>Corporation Tax</strong>, you will need to do them separately."
+      }) }}
+
+      {% endif %}
+
+
+    {% endif %}
+
+
+
+
+    <!-- <h2 class="govuk-heading-l">
+      Corporation Tax
+    </h2> -->
+
+    <!-- use additional modifier class to change column widths for multiple groups of questions and answers: -->
+    <!--   * `app-check-your-answers--short` for short questions -->
+    <!--   * `govuk-summary-list__keys-long` for long questions -->
+    <!--   * none for single group of q&a -->
+
+
+  <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Government Gateway details
+        </dt>
+        <dd class="govuk-summary-list__value">
+
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="https://bas-verification.herokuapp.com/Live-5/manage_accounts/profile?source=personal&userid=0&profile_redirect=/Live/new-registration/pta/dashboard">
+            Manage details <span class="govuk-visually-hidden">company name</span>
+          </a>
+        </dd>
+      </div>
+
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Business help and tips
+        </dt>
+        <dd class="govuk-summary-list__value">
+
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="https://bas-verification.herokuapp.com/Live-5/manage_accounts/profile?source=personal&userid=0&profile_redirect=/Live/new-registration/pta/dashboard">
+            View or change email address <span class="govuk-visually-hidden">registered address</span>
+          </a>
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Go paperless with HMRC
+        </dt>
+        <dd class="govuk-summary-list__value">
+
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="https://bas-verification.herokuapp.com/Live-5/manage_accounts/profile?source=personal&userid=0&profile_redirect=/Live/new-registration/pta/dashboard">
+            Manage paperless notifications<span class="govuk-visually-hidden">contact name</span>
+          </a>
+        </dd>
+      </div>
+
+    </dl>
+
+
+
+
+
+
+
+
+
+          {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+                    <h2 class="govuk-heading-l">
+
+                    Self Assessment
+                  </h2>
+
+                  <!-- use additional modifier class to change column widths for multiple groups of questions and answers: -->
+                  <!--   * `app-check-your-answers--short` for short questions -->
+                  <!--   * `govuk-summary-list__keys-long` for long questions -->
+                  <!--   * none for single group of q&a -->
+                  <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Full name
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Sarah Philips
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a href="#">
+                          Change <span class="govuk-visually-hidden">full name</span>
+                        </a>
+                      </dd>
+                    </div>
+
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Address
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        30 Romford Road<br>
+          Wellington</br>
+          TF1 4ER
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a href="#">
+                          Change <span class="govuk-visually-hidden">registered address</span>
+                        </a>
+                      </dd>
+                    </div>
+
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Landline number
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        0121 445 5555
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a href="#">
+                          Change <span class="govuk-visually-hidden">landline</span>
+                        </a>
+                      </dd>
+                    </div>
+
+
+
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Mobile number
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        	07700 900457
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a href="#">
+                          Change <span class="govuk-visually-hidden">mobile</span>
+                        </a>
+                      </dd>
+                    </div>
+
+                    {% if (data['contactPref'] == "Letter")  %}
+
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Email
+                        {% if (data['emailAddress'] == "unverified") or (data['emailAddress'] == "unusable") %}
+                        
+                        {% endif %}
+
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+
+                        {% if (data['emailAddress'] == null)  %}
+                        sales@abcdigital.com
+                        {% else %}
+                        {% if (data['emailAddress'] == null) or (data['emailAddress'] == "unverified") or (data['emailAddress'] == "unusable") %}
+                        sales@abcdigital.com
+                        <br>
+                        <a href="email/confirmation-email">Verify your email</a>
+
+                        {% else %}
+
+                        {{data['emailAddress']}}
+                      {% endif %}
+
+                        {% endif %}
+
+
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        {% if (data['emailAddress'] == null) %}
+                        <!-- <a href="email/business-email-add?emailAddress=&tax=vat">
+                        Add <span class="govuk-visually-hidden">email</span>
+                      </a> -->
+
+                      <a href="#">
+                      Change <span class="govuk-visually-hidden">email</span>
+                    </a>
+                          {% elseif (data['emailAddress'] == "unverified") or (data['emailAddress'] == "unusable")  %}
+
+                          <a href="email/business-email?tax=vat">
+                          Change <span class="govuk-visually-hidden">email</span>
+                        </a>
+                            {% else %}
+                          <span class="govuk-body govuk-!-font-weight-bold">Pending</span>
+
+                          {% endif %}
+
+
+                      </dd>
+                    </div>
+
+                    {% else %}
+
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Email
+                        {% if (data['emailAddress'] == "unverified") or (data['emailAddress'] == "unusable")  %}
+                        
+                        {% endif %}
+
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+
+                        {% if (data['emailAddress'] == null)  %}
+                        info@abcdigital.com
+                        {% else %}
+                        {% if (data['emailAddress'] == "unverified")  %}
+                        sales@abcdigital.com
+                        <br>
+                        <a href="email/confirmation-email">Verify your email</a>
+
+                        {% elseif (data['emailAddress'] == "unusable")  %}
+                        sales@abcdigital.com
+                        <br>
+                        <a href="email/confirmation-usable">Reset your email</a>
+
+                        {% else %}
+
+                        {{data['emailAddress']}}
+                      {% endif %}
+
+                        {% endif %}
+
+
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        {% if (data['emailAddress'] == null) or (data['emailAddress'] == "unverified") or (data['emailAddress'] == "unusable")  %}
+                        <a href="email/business-email?tax=itsa">
+                        Change <span class="govuk-visually-hidden">email</span>
+                      </a>
+                          {% else %}
+                          <span class="govuk-body govuk-!-font-weight-bold">Pending</span>
+
+                          {% endif %}
+
+
+                      </dd>
+                    </div>
+                    {% endif %}
+
+
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Contact preference
+                      </dt>
+
+
+                      {% if (data['contactPref'] == "NuLetter")  %}
+
+                        <dd class="govuk-summary-list__value">Letter</dd>
+                        <dd class="govuk-summary-list__actions">
+                          <span class="govuk-body govuk-!-font-weight-bold">Pending</span>
+                        </dd>
+
+                        {% elseif (data['emailAddress'] == "verified")  %}
+
+                        <dd class="govuk-summary-list__value">
+
+                        Email
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a href="choose-preference?tax=itsa"">
+                          Change
+                        </a>
+
+                      </dd>
+
+
+
+                      {% else %}
+                      <dd class="govuk-summary-list__value">
+
+                      Email
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                      <a href="choose-preference?tax=itsa">
+                        Change
+                      </a>
+
+                    </dd>
+                    {% endif %}
+
+                    </div>
+
+
+                  </dl>
+
+
+                <!-- ///////////////////////////////////////////////////////////////////  -->
+                <!-- ///////////////////////////////////////////////////////////////////  -->
+                <!-- ///////////////////////   CORPORATION TAX   ///////////////////////  -->
+                <!-- ///////////////////////////////////////////////////////////////////  -->
+
+
+
+                  <h2 class="govuk-heading-l">
+                    Corporation Tax
+                  </h2>
+
+                  <!-- use additional modifier class to change column widths for multiple groups of questions and answers: -->
+                  <!--   * `app-check-your-answers--short` for short questions -->
+                  <!--   * `govuk-summary-list__keys-long` for long questions -->
+                  <!--   * none for single group of q&a -->
+
+                <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Company name
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        ABC Digital Solutions
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a href="business-name">
+                          Change <span class="govuk-visually-hidden">company name</span>
+                        </a>
+                      </dd>
+                    </div>
+
+
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Registered address
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                      30 Romford Road<br>
+          Wellington</br>
+          TF1 4ER
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a href="#">
+                          Change <span class="govuk-visually-hidden">registered address</span>
+                        </a>
+                      </dd>
+                    </div>
+
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Contact name
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Nazim Iqbal
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a href="#">
+                          Change <span class="govuk-visually-hidden">contact name</span>
+                        </a>
+                      </dd>
+                    </div>
+
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Contact address
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                      30 Romford Road<br>
+          Wellington<br>
+          TF1 4ER
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a href="#">
+                          Change <span class="govuk-visually-hidden">contact address</span>
+                        </a>
+                      </dd>
+                    </div>
+
+
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Daytime number
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        0121 445 5555
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a href="#">
+                          Change <span class="govuk-visually-hidden">daytime number</span>
+                        </a>
+                      </dd>
+                    </div>
+
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Evening number
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        0121 445 5555
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a href="#">
+                          Change <span class="govuk-visually-hidden">evening number</span>
+                        </a>
+                      </dd>
+                    </div>
+
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Mobile number
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        07700 900457
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a href="#">
+                          Change <span class="govuk-visually-hidden">mobile number</span>
+                        </a>
+                      </dd>
+                    </div>
+
+
+
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Password
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        ****
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a href="#">
+                          Change <span class="govuk-visually-hidden">password</span>
+                        </a>
+                      </dd>
+                    </div>
+
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Email
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        accounts@abcdigital.com
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a href="#">
+                          Change <span class="govuk-visually-hidden">email</span>
+                        </a>
+                      </dd>
+                    </div>
+
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Business tips
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Not subscribed
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a href="#">
+                          Subscribe <span class="govuk-visually-hidden">to business tips</span>
+                        </a>
+                      </dd>
+                    </div>
+                  </dl>
+
+
+
+
+
+                <!-- /////////////////////////////////////////////////////////  -->
+                <!-- /////////////////////////////////////////////////////////  -->
+                <!-- ///////////////////////   PAYE   ///////////////////////  -->
+                <!-- /////////////////////////////////////////////////////////  -->
+
+
+                  <h2 class="govuk-heading-l">
+                    PAYE
+                  </h2>
+
+                  <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Business name
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        ABC Digital Solutions Ltd
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a href="#">
+                          Change <span class="govuk-visually-hidden">business name</span>
+                        </a>
+                      </dd>
+                    </div>
+
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Trading name
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        ABC Digital Solutions
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a href="#">
+                          Change <span class="govuk-visually-hidden">trading name</span>
+                        </a>
+                      </dd>
+                    </div>
+
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Registered address
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                      30 Romford Road<br>
+          Wellington</br>
+          TF1 4ER
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a href="#">
+                          Change <span class="govuk-visually-hidden">registered address</span>
+                        </a>
+                      </dd>
+                    </div>
+
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Contact name
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Nazim Iqbal
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a href="#">
+                          Change <span class="govuk-visually-hidden">contact name</span>
+                        </a>
+                      </dd>
+                    </div>
+
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Contact address
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                      30 Romford Road<br>
+          Wellington<br>
+          TF1 4ER
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a href="#">
+                          Change <span class="govuk-visually-hidden">contact address</span>
+                        </a>
+                      </dd>
+                    </div>
+
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Landline
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        0121 445 5555
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a href="#">
+                          Change <span class="govuk-visually-hidden">landline</span>
+                        </a>
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Mobile
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        07700 900457
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a href="#">
+                          Change <span class="govuk-visually-hidden">mobile</span>
+                        </a>
+                      </dd>
+                    </div>
+
+
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Business contact
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        <a href="#">
+                          View<span class="govuk-visually-hidden"> email</span>
+                        </a>
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a href="#">
+                          View<span class="govuk-visually-hidden"> email</span>
+                        </a>
+                      </dd>
+                    </div>
+
+
+                                        <div class="govuk-summary-list__row">
+                                          <dt class="govuk-summary-list__key">
+                                            Communication email
+
+                                            {% if (data['emailAddress'] == "unverified") or (data['emailAddress'] == "unusable")  %}
+                                            
+                                            {% endif %}
+
+                                          </dt>
+                                          <dd class="govuk-summary-list__value">
+
+
+
+                                            {% if (data['emailAddress'] == null) %}
+                                            info@abcdigital.com
+                                            {% elseif (data['emailAddress'] == "unverified")  %}
+                                            sales@abcdigital.com
+                                            <br>
+                                            <a href="email/confirmation-email">Verify your email</a>
+
+                                            {% elseif (data['emailAddress'] == "unusable")  %}
+                                            sales@abcdigital.com
+                                            <br>
+                                            <a href="email/confirmation-usable">Reset your email</a>
+
+                                            {% else %}
+
+                                            {{data['emailAddress']}}
+                                          {% endif %}
+
+                                          </dd>
+
+                                          <dd class="govuk-summary-list__actions">
+                                            {% if (data['emailAddress'] == null) or (data['emailAddress'] == "unverified") or (data['emailAddress'] == "unusable")  %}
+
+                                            <a href="email/business-email?tax=paye">
+                                            Change <span class="govuk-visually-hidden">email</span>
+                                          </a>
+                                              {% else %}
+
+                                            <span class="govuk-body govuk-!-font-weight-bold">Pending</span>
+
+                                              {% endif %}
+
+
+                                          </dd>
+
+
+                                        </div>
+
+<!--
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Business tips
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        info@abcdigital.com
+                      </dd>
+
+                      <dd class="govuk-summary-list__actions">
+                        {% if (data['emailAddress'] == null)  %}
+
+                        <a href="email/business-email?tax=paye">
+                        Change <span class="govuk-visually-hidden">email</span>
+                      </a>
+                          {% else %}
+
+                        <span class="govuk-body govuk-!-font-weight-bold">Pending</span>
+
+                          {% endif %}
+
+
+                      </dd>
+
+
+                    </div> -->
+
+                    <!-- <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Message Notifications
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                      	info@abcdigital.com
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        {% if (data['emailAddress'] == null)  %}
+
+                        <a href="email/business-email?tax=paye">
+                        Change <span class="govuk-visually-hidden">email</span>
+                      </a>
+                          {% else %}
+
+                        <span class="govuk-body govuk-!-font-weight-bold">Pending</span>
+
+                          {% endif %}
+
+
+                      </dd>
+                    </div> -->
+
+                    <!-- <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        RTI submission confirmations
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+	                       info@abcdigital.com
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        {% if (data['emailAddress'] == null)  %}
+
+                        <a href="email/business-email?tax=paye">
+                        Change <span class="govuk-visually-hidden">email</span>
+                      </a>
+                          {% else %}
+
+                        <span class="govuk-body govuk-!-font-weight-bold">Pending</span>
+
+                          {% endif %}
+
+
+                      </dd>
+                    </div> -->
+
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Password
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        ****
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a href="#">
+                          Change <span class="govuk-visually-hidden">account password</span>
+                        </a>
+                      </dd>
+                    </div>
+
+
+                  </dl>
+
+
+
+
+
+                <!-- /////////////////////////////////////////////////////////  -->
+                <!-- ////////////////////////   VAT  /////////////////////////  -->
+                <!-- /////////////////////////////////////////////////////////  -->
+
+
+                  <!-- only add a heading for a list if there is more than one list -->
+                    <h2 class="govuk-heading-l">
+                    VAT
+                  </h2>
+
+                  <!-- use additional modifier class to change column widths for multiple groups of questions and answers: -->
+                  <!--   * `app-check-your-answers--short` for short questions -->
+                  <!--   * `govuk-summary-list__keys-long` for long questions -->
+                  <!--   * none for single group of q&a -->
+                  <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Business name
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        ABC Digital Solutions
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+
+
+
+
+                        {% if BTAuser == "nudge-unusable-email" %}
+                        <a href="verify-email-nudge?route=ma">Change <span class="govuk-visually-hidden">business name</span></a>
+                        {% else %}
+
+                          {% if company == "partnership" %}
+                          <a href="https://vatvc-prototype.herokuapp.com/3-9-0/chocs/ppob?route=ma?company=partnership">
+                            Change <span class="govuk-visually-hidden">business name</span>
+                          </a>
+                          {% else %}
+                          <a href="https://vatvc-prototype.herokuapp.com/3-9-0/chocs/business-name">
+                            Change <span class="govuk-visually-hidden">business name</span>
+                          </a>
+                          {% endif %}
+
+                        {% endif %}
+
+
+
+
+                      </dd>
+                    </div>
+
+
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Principal place of business
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+
+                        {% if (location == "overseas") %}
+                        <span class="form-hint"><i>HMRC address for overseas businesses</i></span>
+                        Ruby House,<br>Aberdeen<br>Aberdeenshire<br>AB10 1ZP
+
+                        {% else %}
+
+                        30 Romford Road<br>
+                        Wellington</br>
+                        TF1 4ER
+                        {% endif %}
+
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a href="https://vatvc-prototype.herokuapp.com/3-9-0/chocs/ppob?route=ma">
+                          Change <span class="govuk-visually-hidden">principal place of business</span>
+                        </a>
+                      </dd>
+                    </div>
+
+
+
+
+
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Landline number
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        0121 445 5555
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+
+                        <a href="https://vatvc-prototype.herokuapp.com/3-9-0/chocs/business-numbers?route=ma">
+                          Change <span class="govuk-visually-hidden">landline number</span>
+                        </a>
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Mobile number
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        07700 900457
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a href="https://vatvc-prototype.herokuapp.com/3-9-0/chocs/business-numbers-mobile?route=ma">
+                          Change <span class="govuk-visually-hidden">mobile number</span>
+                        </a>
+                      </dd>
+                    </div>
+
+                    {% if (data['contactPref'] == "Letter")  %}
+
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Email
+                        {% if (data['emailAddress'] == "unverified") or (data['emailAddress'] == "unusable")  %}
+                        
+                        {% endif %}
+
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+
+                        {% if (data['emailAddress'] == null)  %}
+                        Not provided
+                        {% else %}
+                        {% if (data['emailAddress'] == "unverified")  %}
+                        sales@abcdigital.com
+                        <br>
+                        <a href="email/confirmation-email">Verify your email</a>
+
+                        {% elseif (data['emailAddress'] == "unusable")  %}
+                        sales@abcdigital.com
+                        <br>
+                        <a href="email/confirmation-usable">Reset your email</a>
+
+                        {% else %}
+
+                        {{data['emailAddress']}}
+                      {% endif %}
+
+                        {% endif %}
+
+
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        {% if (data['emailAddress'] == null) %}
+                        <a href="email/business-email-add?emailAddress=&tax=vat">
+                        Add <span class="govuk-visually-hidden">email</span>
+                      </a>
+                          {% elseif (data['emailAddress'] == "unverified") or (data['emailAddress'] == "unusable")  %}
+
+                          <a href="email/business-email?tax=vat">
+                          Change <span class="govuk-visually-hidden">email</span>
+                        </a>
+                            {% else %}
+                          <span class="govuk-body govuk-!-font-weight-bold">Pending</span>
+
+                          {% endif %}
+
+
+                      </dd>
+                    </div>
+
+
+                    {% else %}
+
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Email
+                        {% if (data['emailAddress'] == "unverified") or (data['emailAddress'] == "unusable") %}
+                        
+                        {% endif %}
+
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        {% if (data['contactPref'] == "newEmail")  %}
+                        info@abcdigital.com
+                        {% elseif (data['emailAddress'] == null)  %}
+                        info@abcdigital.com
+                        {% else %}
+                        {% if (data['emailAddress'] == "unverified")  %}
+                        sales@abcdigital.com
+                        <br>
+                        <a href="email/confirmation-email">Verify your email</a>
+
+                        {% elseif (data['emailAddress'] == "unusable")  %}
+                        sales@abcdigital.com
+                        <br>
+                        <a href="email/confirmation-usable">Reset your email</a>
+
+                        {% else %}
+                        {{data['emailAddress']}}
+                      {% endif %}
+
+                        {% endif %}
+
+
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        {% if (data['contactPref'] == "newEmail")  %}
+                        <span class="govuk-body govuk-!-font-weight-bold">Pending</span>
+                        {% elseif (data['emailAddress'] == null) or (data['emailAddress'] == "unverified") or (data['emailAddress'] == "unusable")  %}
+                        <a href="email/business-email?tax=vat">
+                        Change <span class="govuk-visually-hidden">email</span>
+                      </a>
+                          {% else %}
+                          <span class="govuk-body govuk-!-font-weight-bold">Pending</span>
+
+                          {% endif %}
+
+
+                      </dd>
+                    </div>
+                    {% endif %}
+
+
+
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Contact preference
+                      </dt>
+
+
+                      {% if (data['contactPref'] == "NuLetter")  %}
+
+                        <dd class="govuk-summary-list__value">Letter</dd>
+                        <dd class="govuk-summary-list__actions">
+                          <span class="govuk-body govuk-!-font-weight-bold">Pending</span>
+                        </dd>
+
+                        {% elseif (data['emailAddress'] == "verified")  %}
+
+                        <dd class="govuk-summary-list__value">
+
+                        Email
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a href="choose-preference">
+                          Change
+                        </a>
+
+                      </dd>
+
+                      {% elseif (data['contactPref'] == "Letter")  %}
+
+                        <dd class="govuk-summary-list__value">Letter</dd>
+                        <dd class="govuk-summary-list__actions">
+
+                            <a href="choose-preference">
+                              Change
+                            </a>
+                      </dd>
+
+                      {% else %}
+                      <dd class="govuk-summary-list__value">
+
+                      Email
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                      <a href="choose-preference">
+                        Change
+                      </a>
+
+                    </dd>
+                    {% endif %}
+
+                    </div>
+
+
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Website address
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        www.abcdigital.com
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+
+
+
+
+
+                          <a href="https://vatvc-prototype.herokuapp.com/3-9-0/chocs/business-website?route=ma">
+                            Change <span class="govuk-visually-hidden">business website</span>
+                          </a>
+
+
+
+
+
+
+                      </dd>
+                    </div>
+
+
+                  </dl>
+
+
+                </div>
+
+      <!-- <section>
+
+                <div class="govuk-grid govuk-!-margin-bottom-4">
+                  <h3 class="govuk-heading-m" name="#">Manage your taxes</h3>
+
+
+                 <p>View your TAX details in more detail.</p>
+
+                  <ul class="govuk-list">
+                    <li>
+                      <a class="govuk-link" href="#">Self Assessment</a>
+                    </li>
+                    <li>
+                      <a class="govuk-link" href="https://vatvc-prototype.herokuapp.com/3-8-0/your-vat-details">VAT</a>
+                    </li>
+                    <li>
+                      <a class="govuk-link" href="#">PAYE</a>
+                    </li>
+                    <li>
+                      <a class="govuk-link" href="#">Corporation Tax</a>
+                    </li>
+                    <li>
+                      <a class="govuk-link" href="#">VAT MOSS</a>
+                    </li>
+                  </ul>
+
+            </div>
+
+                  </section> -->
+
+
+                  <p class="govuk-body govuk-!-margin-top-9 govuk-!-font-size-16"><a href="#">Is there anything wrong with this page?</a></p>
+
+
+      {% endblock %}

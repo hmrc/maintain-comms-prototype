@@ -1,0 +1,583 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Account preferences
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% include "./includes/phase.html" %}
+
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+
+{% endblock %}
+
+{% block content %}
+
+
+
+    <h1 class="govuk-heading-xl">
+      Account preferences
+    </h1>
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <p>You can change how you would prefer to be contacted, and which address you use for each tax.</p>
+
+
+         <!-- <div class="govuk-grid-column-two-thirds"> -->
+
+          {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+        <h2 class="govuk-heading-m">
+        General preferences
+      </h2>
+
+      {% if (data['emailAddress'] == null)  %}
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Marketing"
+            },
+            value: {
+              text: "accounts@abcdigital.com"
+            },
+            actions: {
+              items: [
+                {
+                  href: "choose-preference-alt",
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
+            }
+          },
+
+          {
+            key: {
+              text: "Direct Debits"
+            },
+            value: {
+              text: "SMS"
+            },
+            actions: {
+              items: [
+                {
+                  href: "choose-preference-alt",
+                  text: "Change",
+                  visuallyHiddenText: "date of birth"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Reminders"
+            },
+            value: {
+              text: "accounts@abcdigital.com"
+            },
+            actions: {
+              items: [
+                {
+                  href: "choose-preference-alt",
+                  text: "Change",
+                  visuallyHiddenText: "contact information"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Penalties"
+            },
+            value: {
+              text: "Letter"
+            },
+            actions: {
+              items: [
+                {
+                  href: "choose-preference-alt",
+                  text: "Change",
+                  visuallyHiddenText: "contact details"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+      {% else %}
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Marketing"
+            },
+            value: {
+              text: data.emailAddress
+            },
+            actions: {
+              items: [
+                {
+                  href: "choose-preference-alt",
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
+            }
+          },
+
+          {
+            key: {
+              text: "Direct Debits"
+            },
+            value: {
+              text: "SMS"
+            },
+            actions: {
+              items: [
+                {
+                  href: "choose-preference-alt",
+                  text: "Change",
+                  visuallyHiddenText: "date of birth"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Reminders"
+            },
+            value: {
+              text: data.emailAddress
+            },
+            actions: {
+              items: [
+                {
+                  href: "choose-preference-alt",
+                  text: "Change",
+                  visuallyHiddenText: "contact information"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Penalties"
+            },
+            value: {
+              text: "Letter"
+            },
+            actions: {
+              items: [
+                {
+                  href: "choose-preference-alt",
+                  text: "Change",
+                  visuallyHiddenText: "contact details"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+      {% endif %}
+
+
+
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+
+        <!-- {{ govukButton({
+          text: "Add preferences to taxes",
+          href: "#"
+        }) }} -->
+
+
+        <h2 class="govuk-heading-m">
+        Tax specific preferences
+      </h2>
+
+      {% if (data['contactPref'] == "Primary email address")  %}
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-3">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            VAT Reminders
+          </dt>
+          <dd class="govuk-summary-list__value">
+
+
+            {% if (data['emailAddress'] == null)  %}
+              accounts@abcdigital.com
+
+              {% else %}
+              {{data['emailAddress']}}
+
+              {% endif %}
+
+
+
+          </dd>
+          <dd class="govuk-summary-list__actions">
+
+            <span class="govuk-body govuk-!-font-weight-bold">Pending</span>
+          </dd>
+        </div>
+
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Corporation Tax Reminders
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    claire.bloggs@abcdigital.com
+                  </dd>
+                  <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="choose-preference-alt">
+                      Change<span class="govuk-visually-hidden"> secondary email</span>
+                    </a>
+                    <!-- <span class="govuk-body govuk-!-font-weight-bold">Pending</span> -->
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    VAT Penalties
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    SMS
+                  </dd>
+                  <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="choose-preference">
+                      Change<span class="govuk-visually-hidden"> secondary email</span>
+                    </a>
+                  </dd>
+                </div>
+
+
+
+
+              </dl>
+      {% else %}
+
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-3',
+          rows: [
+            {
+              key: {
+                text: "VAT reminders"
+              },
+              value: {
+                text: "Letter"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "choose-preference-alt",
+                    text: "Change",
+                    visuallyHiddenText: "name"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Corporation Tax reminders"
+              },
+              value: {
+                text: "claire.bloggs@abcdigital.com"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "choose-preference-alt",
+                    text: "Change",
+                    visuallyHiddenText: "date of birth"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "VAT penalties"
+              },
+              value: {
+                text: "accounts@abcdigital.com"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "choose-preference-alt",
+                    text: "Change",
+                    visuallyHiddenText: "contact information"
+                  }
+                ]
+              }
+
+            }
+          ]
+        }) }}
+
+        {% endif %}
+
+        <p class="govuk-!-margin-bottom-9"><a href="add-preference/choose-tax">Add preference</a></p>
+
+
+        <!-- <h2 class="govuk-heading-m">
+        Self Assessment
+      </h2>
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-9',
+          rows: [
+            {
+              key: {
+                text: "Marketing"
+              },
+              value: {
+                text: "accounts@abcdigital.com"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "choose-preference-alt",
+                    text: "Change",
+                    visuallyHiddenText: "name"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Direct Debits"
+              },
+              value: {
+                text: "SMS"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "choose-preference-alt",
+                    text: "Change",
+                    visuallyHiddenText: "date of birth"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Reminders"
+              },
+              value: {
+                text: "accounts@abcdigital.com"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "choose-preference-alt",
+                    text: "Change",
+                    visuallyHiddenText: "contact information"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Penalties"
+              },
+              value: {
+                text: "Letter"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "choose-preference-alt",
+                    text: "Change",
+                    visuallyHiddenText: "contact details"
+                  }
+                ]
+              }
+            }
+          ]
+        }) }}
+
+        <h2 class="govuk-heading-m">
+        VAT
+      </h2>
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-9',
+          rows: [
+            {
+              key: {
+                text: "Marketing"
+              },
+              value: {
+                text: "accounts@abcdigital.com"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "choose-preference-alt",
+                    text: "Change",
+                    visuallyHiddenText: "name"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Direct Debits"
+              },
+              value: {
+                text: "SMS"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "choose-preference-alt",
+                    text: "Change",
+                    visuallyHiddenText: "date of birth"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Reminders"
+              },
+              value: {
+                text: "accounts@abcdigital.com"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "choose-preference-alt",
+                    text: "Change",
+                    visuallyHiddenText: "contact information"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Penalties"
+              },
+              value: {
+                text: "Letter"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "choose-preference-alt",
+                    text: "Change",
+                    visuallyHiddenText: "contact details"
+                  }
+                ]
+              }
+            }
+          ]
+        }) }}
+
+
+        <h2 class="govuk-heading-m">
+        PAYE
+      </h2>
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-9',
+          rows: [
+            {
+              key: {
+                text: "Marketing"
+              },
+              value: {
+                text: "accounts@abcdigital.com"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "choose-preference-alt",
+                    text: "Change",
+                    visuallyHiddenText: "name"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Direct Debits"
+              },
+              value: {
+                text: "SMS"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "choose-preference-alt",
+                    text: "Change",
+                    visuallyHiddenText: "date of birth"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Reminders"
+              },
+              value: {
+                text: "accounts@abcdigital.com"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "choose-preference-alt",
+                    text: "Change",
+                    visuallyHiddenText: "contact information"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Penalties"
+              },
+              value: {
+                text: "Letter"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "choose-preference-alt",
+                    text: "Change",
+                    visuallyHiddenText: "contact details"
+                  }
+                ]
+              }
+            }
+          ]
+        }) }} -->
+
+
+
+
+        <!-- </div> -->
+      </div>
+
+      <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-4">
+      <p class="govuk-body govuk-!-margin-top-9 govuk-!-font-size-16"><a href="#">Is there anything wrong with this page?</a></p>
+    </div>
+
+</div>
+
+
+      {% endblock %}

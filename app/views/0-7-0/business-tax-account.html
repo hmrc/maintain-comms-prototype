@@ -1,0 +1,184 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Business Tax Account
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% include "./includes/phase.html" %}
+
+{% include "./includes/bta-nav.html" %}
+
+{% endblock %}
+
+{% block content %}
+
+
+
+
+  <h1 class="govuk-heading-xl">Your business taxes</h1>
+
+
+<div class="govuk-grid-row column-full card-container" id="cardAmount">
+
+    <div class="govuk-grid-column-two-thirds" style="padding-bottom: 6px">
+      <h2 class="govuk-heading-m" style="margin-top: 0px; margin-bottom: 0">
+        Self Assessment
+      </h2>
+      <p>
+        Your Self Assessment Unique Taxpayer Reference (UTR) is 1234567890.
+      </p>
+    </div>
+    <div class="govuk-grid-column-one-half" style="padding-bottom: 6px">
+      <h3 class="govuk-heading-s" style="margin-bottom: 10px">
+        Your returns
+      </h3>
+      <p style="margin-bottom: 10px">
+        Tax year 2017 to 2018 is ready to complete.
+      </p>
+      <p style="margin-bottom: 10px">
+        To avoid penalties, you must complete the return by 11.59pm on 31 January 2019.
+      </p>
+      <p>
+        <a href="#">Complete tax year 2017 to 2018 Self Assessment return</a>
+      </p>
+    </div>
+    <div class="govuk-grid-column-one-half" style="padding-bottom: 6px">
+      <h3 class="govuk-heading-s" style="margin-bottom: 10px">
+        Your payments
+      </h3>
+      <p style="margin-bottom: 10px">
+        You owe <span class="bold-small">£1,073</span> and it is late.
+      </p>
+      <p style="margin-bottom: 10px">
+        Pay now to avoid further penalties.
+      </p>
+      <p>
+        <a href="#">Make a Self Assessment payment</a>
+      </p>
+    </div>
+    <div class="govuk-grid-column-two-thirds" style="margin-top: 1px">
+      <p style="margin-bottom: 0">
+        <a href="#">More details about your Self Assessment returns and payments</a>
+      </p>
+    </div>
+</div>
+
+
+
+<!-- CORPORATION TAX -->
+
+  <div class="govuk-grid-row column-full card-container" id="cardAmount">
+
+      <div class="govuk-grid-column-two-thirds" style="padding-bottom: 6px">
+        <h2 class="govuk-heading-m" style="margin-top: 0px; margin-bottom: 0">
+          Corporation Tax
+        </h2>
+        <p>
+          Your Corporation Tax Unique Taxpayer Reference (UTR) is 1234567890.
+        </p>
+      </div>
+      <div class="govuk-grid-column-one-half" style="padding-bottom: 6px">
+        <h3 class="govuk-heading-s" style="margin-bottom: 10px">
+          Your returns
+        </h3>
+        <p style="margin-bottom: 10px">
+          You may have returns to complete.
+        </p>
+        <p>
+          <a href="#">Find out if you have a Corporation Tax return to complete</a>
+        </p>
+      </div>
+      <div class="govuk-grid-column-one-half" style="padding-bottom: 6px">
+        <h3 class="govuk-heading-s" style="margin-bottom: 10px">
+          Your payments
+        </h3>
+        <p>
+          You are <span class="bold-small">£1,073</span> in credit.
+        </p>
+      </div>
+      <div class="govuk-grid-column-two-thirds" style="margin-top: 1px">
+        <p style="margin-bottom: 0">
+          <a href="#">More details about your Corporation Tax returns and payments</a>
+        </p>
+      </div>
+  </div>
+
+
+  <div class="govuk-grid-row column-full card-container" id="cardAmount">
+
+      <div class="govuk-grid-column-two-thirds" style="padding-bottom: 6">
+        <h2 class="govuk-heading-m" style="margin-top: 0px">
+          Making Tax Digital for VAT
+        </h2>
+
+      </div>
+      <div class="govuk-grid-column-two-thirds" style="padding-bottom: 6px">
+        <p>
+          You can submit your VAT Returns, view what you owe, your return deadlines, your payment history, previously submitted returns and make further VAT payments. You can also update some of your VAT details and sign up to Making Tax Digital.</p>
+
+          <!-- <p>If your taxable turnover exceeds the VAT threshold, you must sign up to Making Tax Digital for VAT and submit your VAT Returns using compatible software.</p> -->
+
+        <p style="margin-bottom: 0">
+          {% if (data['emailAddress'] == "unverified")  %}
+          <a href="https://vatvc-prototype.herokuapp.com/3-9-0/your-vat-details?BTAuser=nudge-verify">View your VAT account</a>
+
+          {% elseif (data['emailAddress'] == "unusable")  %}
+          <a href="https://vatvc-prototype.herokuapp.com/3-9-0/your-vat-details?BTAuser=nudge-unusable-email">View your VAT account</a>
+
+
+        {% else %}
+          <a href="https://vatvc-prototype.herokuapp.com/3-9-0/your-vat-details">View your VAT account</a>
+          {% endif %}
+
+          <!-- {% if (data['emailAddress'] == "unverified")  %}
+
+          <div class="govuk-inset-text">
+                You need to verify your email address. <a href="confirmation-email">Resend the email</a> to verify it.
+            </div>
+            {% elseif BTAuser == "nudge-unusable-email" %}
+
+            <div class="govuk-inset-text">
+                UNUSABLE EMAIL ADDRESS. <a href="confirmation-email">Confirm</a> to verify it.
+            </div>
+
+            {% endif %} -->
+
+      </div>
+  </div>
+
+
+
+
+
+
+<!-- PTA -->
+
+  <div class="govuk-grid-row column-full card-container" id="cardAmount">
+
+      <div class="govuk-grid-column-two-thirds" style="padding-bottom: 6">
+        <h2 class="govuk-heading-m" style="margin-top: 0px">
+            Personal Tax
+        </h2>
+
+      </div>
+      <div class="govuk-grid-column-two-thirds" style="padding-bottom: 6px">
+        <p>
+          For your non-business taxes, benefits, National Insurance and State Pension.
+        </p>
+        <p style="margin-bottom: 0">
+          <a href="#">Personal Taxes</a>
+        </p>
+      </div>
+  </div>
+
+
+
+
+{% endblock %}

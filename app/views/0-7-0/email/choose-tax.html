@@ -1,0 +1,127 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Which taxes do you want to use this email for
+{% endblock %}
+
+{% block beforeContent %}
+{% include ".././includes/phase.html" %}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="confirm-email" method="post">
+    <!-- <form method="post" class="form"> -->
+    {% if (data['tax'] == "itsa")  %}
+
+
+    {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+    {{ govukCheckboxes({
+      idPrefix: "emailTax",
+      name: "emailTax",
+      fieldset: {
+        legend: {
+          text: "Which taxes do you want to use this email for?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+
+      hint: {
+         text: "You can update Self Assessment, PAYE and VAT details at the same time."
+       },
+
+
+      items: [
+      {
+        value: "Self Assessment",
+        text: "Self Assessment",
+        checked: true
+
+      },
+
+      {
+        value: "PAYE",
+        text: "PAYE"
+
+      },
+
+        {
+          value: "VAT",
+          text: "VAT"
+        }
+      ]
+    }) }}
+
+    {% else %}
+
+    {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+    {{ govukCheckboxes({
+      idPrefix: "emailTax",
+      name: "emailTax",
+      fieldset: {
+        legend: {
+          text: "Which taxes do you want to use this email for?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+
+      hint: {
+         text: "You can update VAT, PAYE and Self Assessment details at the same time."
+       },
+
+
+      items: [
+
+
+        {
+          value: "VAT",
+          text: "VAT",
+          checked: true
+        },
+
+        {
+          value: "PAYE",
+          text: "PAYE"
+        },
+
+        {
+          value: "Self Assessment",
+          text: "Self Assessment"
+        }
+      ]
+    }) }}
+    {% endif %}
+
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+
+
+
+
+    </form>
+  </div>
+</div>
+
+
+
+
+
+  {% endblock %}
