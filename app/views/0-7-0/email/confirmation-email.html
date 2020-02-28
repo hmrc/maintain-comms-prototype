@@ -22,7 +22,26 @@
         Verify your email address
     </h1>
 
-      <p>We've sent an email to {{data['emailAddress']}}. Click on the link in the email to verify your email address.</p>
+
+    <h1 class="heading-large">
+              Verify your email address
+          </h1>
+
+            <p>We've sent an email to
+              {% if (emailAddress == null) %}
+                sales@abcdigital.com
+                {% else %}
+                {{data['emailAddress']}}
+                {% endif %}
+              .
+              Click on the link in the email to verify your email address.</p>
+
+            <p>
+              Check your junk folder. If it is not there we can <a href="confirmation-email">send it again</a>. If we send it again, any previous links will stop working.
+            </p>
+
+
+      <!-- <p>We've sent an email to {{data['emailAddress']}}. Click on the link in the email to verify your email address.</p>
 
       <p>You can <a href="business-email">change your email address</a> if it's incorrect.</p>
 
@@ -37,7 +56,7 @@
         <div class="govuk-details__text">
           Check your junk folder. If it is not there we can <a href="confirmation-email">send it again</a>. If we send it again, any previous links will stop working.
         </div>
-      </details>
+      </details> -->
 
     </div>
  </div>
