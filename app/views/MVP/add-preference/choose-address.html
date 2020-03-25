@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Which address would you like to use?
+{% endblock %}
+
+{% block beforeContent %}
+{% include ".././includes/phase.html" %}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="confirm-add-preference" method="post">
+    <!-- <form method="post" class="form"> -->
+
+    {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+    {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+    {{ govukRadios({
+      idPrefix: "contactAddress",
+      name: "contactAddress",
+      fieldset: {
+        legend: {
+          text: "Which address would you like to use?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--xl"
+        }
+      },
+
+      items: [
+
+      {
+         value: "primary address",
+         text: "Primary address",
+         label: {
+           classes: "govuk-label--s"
+         },
+         hint: {
+           html: "30 Romford Road TF1 4ER"
+         }
+       },
+       {
+          value: "secondary address",
+          text: "Secondary address",
+          label: {
+            classes: "govuk-label--s"
+          },
+          hint: {
+            html: "72 Guild Street<br>SE23 6FH"
+          }
+        },
+        {
+           value: "alternative address",
+           text: "Alternative address",
+           label: {
+             classes: "govuk-label--s"
+           },
+           hint: {
+             html: "50 Romford Road TF1 4ER"
+           }
+         }
+      ]
+    }) }}
+
+
+
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+
+    </form>
+  </div>
+</div>
+
+
+
+
+
+  {% endblock %}

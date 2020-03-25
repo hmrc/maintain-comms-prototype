@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Business Tax Account
+{% endblock %}
+
+{% block beforeContent %}
+{% include "./includes/phase.html" %}
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-two-thirds">
+
+
+    <fieldset class="govuk-fieldset">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+        <h1 class="govuk-fieldset__heading">
+          Sign in
+        </h1>
+      </legend>
+
+      <p>Enter Government Gateway credentials to sign in. You received these when you created your HMRC online account.</p>
+
+
+      {{ govukInput({
+        label: {
+          text: "User ID",
+          isPageHeading: false,
+          classes: ""
+        },
+        classes: "govuk-!-width-one-half",
+        id: "user-id",
+        name: "user-id"
+      }) }}
+      {{ govukInput({
+      label: {
+        text: "Password",
+        isPageHeading: false,
+        classes: ""
+      },
+      classes: "govuk-!-width-one-half",
+      id: "password",
+      name: "password"
+    }) }}
+
+      {{ govukButton({
+        text: "Continue",
+        href: "business-tax-account"
+      }) }}
+
+    </fieldset>
+
+
+
+        <h2 class="govuk-heading-m">Problems signing in</h2>
+
+
+        <ul class="govuk-list">
+            <li><a class="govuk-link" href="create-account" >Don’t have a Government Gateway account</a></li>
+            <li><a class="govuk-link" href="#">Forgotten user ID</a></li>
+            <li><a class="govuk-link" href="#">Forgotten password</a></li>
+            <li><a class="govuk-link" href="#">Forgotten user ID and password</a></li>
+        </ul>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

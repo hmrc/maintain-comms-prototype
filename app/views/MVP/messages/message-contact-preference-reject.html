@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  You have successfully changed your contact preferences for VAT
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% include ".././includes/phase.html" %}
+
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:history.back()"
+}) }}
+
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+<h1 class="govuk-heading-xl">Message detail</h1>
+
+
+      <h2 class="govuk-heading-l">We have rejected the change of contact preferences for VAT</h2>
+
+    <p>
+      <span class="form-hint">
+        This message was sent to you on 03 October 2018
+      </span>
+    </p>
+
+
+
+
+        <p>You cannot use the email address supplied.</p>
+
+    <p>If you do not agree with our decision, you can ask for a review by an HMRC officer not previously involved in the matter.  If you want a review, you should write to us within 30 days of receiving this message giving the reasons why you do not agree with our decision. Write to:</p>
+
+    <p>HMRC VAT Registration Service<br>
+    Crown House<br>
+    Birch Street<br>
+    WOLVERHAMPTON<br>
+    WV1 4JX
+    </p>
+
+
+</div>
+
+</div>
+
+{% endblock %}
