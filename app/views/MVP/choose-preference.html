@@ -41,7 +41,7 @@ How would you prefer to be contacted?
         </span>
         {% else %}
         <span id="changed-name-hint" class="govuk-hint">
-          You are currently contacted by email for VAT at sales@abcdigital.com
+          You are currently contacted by email for VAT at accounts@abcdigital.com
         </span>
         {% endif %}
         {% endif %}
@@ -50,28 +50,20 @@ How would you prefer to be contacted?
 
 
         <div class="govuk-radios">
+          {% if (data['contactPref'] != "Letter")  %}
+          {% else %}
           <div class="govuk-radios__item">
             <input class="govuk-radios__input" id="contactPref" name="contactPref" type="radio" value="Email address">
             <label class="govuk-label govuk-radios__label" for="sign-in">
               Email address
             </label>
             <span id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
-              accounts@abcdigital.com
-            </span>
-          </div>
-          {% if (data['contactPref'] == "Letter")  %}
-          {% else %}
-          <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="contactPref" name="contactPref" type="radio" value="Letter">
-            <label class="govuk-label govuk-radios__label" for="sign-in">
-              Letter
-            </label>
-            <span id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
-              30 Romford Road TF1 4ER
-
+              sales@abcdigital.com
             </span>
           </div>
           {% endif %}
+
+
 
 
 
@@ -86,6 +78,21 @@ How would you prefer to be contacted?
 
                     </div>
 
+
+                              {% if (data['contactPref'] == "Letter")  %}
+                              {% else %}
+                              <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="contactPref" name="contactPref" type="radio" value="Letter">
+                                <label class="govuk-label govuk-radios__label" for="sign-in">
+                                  Letter
+                                </label>
+                                <span id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                                  30 Romford Road TF1 4ER
+
+                                </span>
+                              </div>
+                              {% endif %}
+                              
           <!-- <div class="govuk-radios__item">
             <input class="govuk-radios__input" id="contactPref-3" name="contactPref" type="radio" value="Landline number">
             <label class="govuk-label govuk-radios__label" for="sign-in">
