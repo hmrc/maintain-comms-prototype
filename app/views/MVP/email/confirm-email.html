@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Confirm the new email address
+  Check your answer
 {% endblock %}
 
 {% block beforeContent %}
@@ -23,11 +23,48 @@ Confirm the new email address
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
-                Confirm the new email address
+                Check your answers
               </h1>
             </legend>
 
+            <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
+
+{% if (data['email-add'] != null)  %}
+
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Change preference
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  Yes
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="business-email-add?emailAddress=&focus=vat">
+                    Change<span class="govuk-visually-hidden"> direct debit use</span>
+                  </a>
+                </dd>
+              </div>
+              {% endif %}
+
+                      <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                          Email address
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                          {{data['emailAddress']}}
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                          <a class="govuk-link" href="business-email?focus=vat">
+                            Change<span class="govuk-visually-hidden"> email address</span>
+                        </a>
+
+                        </dd>
+                      </div>
+
+                    </dl>
+
+<!--
               <p>
                 The new email address is
                 {% if (data['emailAddress'] == null)  %}
@@ -37,7 +74,7 @@ Confirm the new email address
                 {% endif %}
               </p>
 
-              <p><a href="./business-email">Change the email address</a></p>
+              <p><a href="./business-email">Change the email address</a></p> -->
 
 
               {% from "govuk/components/button/macro.njk" import govukButton %}
