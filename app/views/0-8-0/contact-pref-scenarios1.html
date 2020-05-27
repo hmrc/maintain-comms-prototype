@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Contact preference scenarios
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-width-container">
+    <main class="govuk-main-wrapper">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">Contact preference scenarios continued</h1>
+          <form class="form" method="post">
+
+        {% if data['current_preference'] == 'email' %}
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                <h1 class="govuk-fieldset__heading">
+                  What scenario are you looking to test?
+                </h1>
+              </legend>
+              <div class="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="ppob_pending" name="ppob" type="radio" value="ppob_pending">
+                  <label class="govuk-label govuk-radios__label" for="ppob_pending">
+                    PPoB address pending
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="ppob_good" name="ppob" type="radio" value="ppob_good">
+                  <label class="govuk-label govuk-radios__label" for="ppob_good">
+                    PPoB up to date
+                  </label>
+                </div>
+              </div>
+            </div>
+          {%else%}
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                  <h1 class="govuk-fieldset__heading">
+                    What scenario are you looking to test?
+                  </h1>
+                </legend>
+                <div class="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="email_needed" name="email_status" type="radio" value="email_needed">
+                    <label class="govuk-label govuk-radios__label" for="email_needed">
+                      No email address in ETMP
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="email_good" name="email_status" type="radio" value="email_good">
+                    <label class="govuk-label govuk-radios__label" for="email_good">
+                      Confirmed email in ETMP
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="email_confirmation_pending" name="email_status" type="radio" value="email_confirmation_pending">
+                    <label class="govuk-label govuk-radios__label" for="email_confirmation_pending">
+                      Attempted change but session has expired
+                    </label>
+                  </div>
+              </div>
+              <p>&nbsp;</p>
+
+          {%endif%}
+
+          <div class="govuk-form-group">
+            <button class="govuk-button" data-module="govuk-button">
+              Off we go
+            </button>
+          </div>
+          </form>
+</div>
+    </div>
+
+  </main>
+  </div>
+
+{% endblock %}

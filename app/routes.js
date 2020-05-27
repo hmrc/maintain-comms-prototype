@@ -1,10 +1,21 @@
-const express = require('express')
-const router = express.Router()
+const express = require('express');
+const router = express.Router();
+const app = express();
 
 // Add your routes here - above the module.exports line
 // require('./routes/0-1-0/routes.js')(router);
+require('./routes/0-8-0/routes.js')(router);
 
-module.exports = router
+module.exports = router;
+
+router.get('/', function (req, res) {
+  //initialising data elements for v0-8-0
+  req.session.data['pref_type'] = "";
+  req.session.data['email_status'] = "";
+  req.session.data['ppob'] = "";
+  res.render('index');
+});
+
 
 router.get('/0-1-0/account-details', (req, res) => {
   console.log(req.session)

@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+How would you prefer to be contacted?
+{% endblock %}
+
+{% block beforeContent %}
+{% include "./includes/phase.html" %}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <div class="govuk-form-group">
+          <form class="form" method="post">
+            <div class="govuk-form-group">
+
+                <h1 class="govuk-heading-xl">
+                  Business address change still pending
+                </h1>
+
+                <p>As you have recently requested to change your business address, you will need to wait for this change to take effect before you will be able to change your contact preference.</p> 
+                  <p>This may take up to two days to be accepted.</p>
+                <p><strong><i>Obviously not the words above</i></strong>
+            </div>
+
+
+        </div>
+        <a class="govuk-button" href="account-details">Continue</a>
+    </form>
+  </div>
+</div>
+
+
+
+
+
+  {% endblock %}

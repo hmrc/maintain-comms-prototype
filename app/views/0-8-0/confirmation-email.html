@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Verify the email address
+{% endblock %}
+
+{% block beforeContent %}
+{% include "./includes/phase.html" %}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+        Verify your email address
+    </h1>
+
+
+
+
+            <p>We've sent an email to
+              {% if (emailAddress == null) %}
+                sales@abcdigital.com
+                {% else %}
+                {{data['emailAddress']}}
+                {% endif %}
+              .
+              Click on the link in the email to verify your email address.</p>
+
+            <p>
+              Check your junk folder. If it is not there we can <a href="confirmation-email">send it again</a>. If we send it again, any previous links will stop working.
+            </p>
+
+
+      <!-- <p>We've sent an email to {{data['emailAddress']}}. Click on the link in the email to verify your email address.</p>
+
+      <p>You can <a href="business-email">change your email address</a> if it's incorrect.</p>
+
+
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            I did not get an email
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          Check your junk folder. If it is not there we can <a href="confirmation-email">send it again</a>. If we send it again, any previous links will stop working.
+        </div>
+      </details> -->
+
+    </div>
+ </div>
+
+ <!-- <p style="margin-top:100px"><a href="confirmation-preferences?emailUpdating=true">Skip email verification (for test purposes only)</a></p> -->
+
+ {% if (data['contactPref'] == "Letter")  %}
+ <p style="margin-top:100px"><a href="../confirmation-update-preference">Skip email verification (for test purposes only)</a></p>
+
+ {% else %}
+ <p style="margin-top:100px"><a href="login">Skip email verification (for test purposes only)</a></p>
+
+ {% endif %}
+
+
+{% endblock %}

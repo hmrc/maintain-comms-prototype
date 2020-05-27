@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+How would you prefer to be contacted?
+{% endblock %}
+
+{% block beforeContent %}
+{% include "./includes/phase.html" %}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <div class="govuk-form-group">
+          <form class="form" method="post">
+            <div class="govuk-form-group">
+
+                <h1 class="govuk-heading-l">
+                  We don't have an email address for you
+                </h1>
+
+                <p>Before we can change your preffered contact method we'll need to ensure we have an email address for you.</p>
+                <p>We'll need to confirm the email address before you can return to change you contact preference</p>
+
+                <h2 class="govuk-heading-m">Would you like to add an email address?</h2>
+
+                <div class="govuk-radios govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="change1" name="email_change" type="radio" value="yes">
+                    <label class="govuk-label govuk-radios__label" for="change1">
+                      Yes
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="change2" name="email_change" type="radio" value="no">
+                    <label class="govuk-label govuk-radios__label" for="change2">
+                      No
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+
+        </div>
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+    </form>
+  </div>
+</div>
+
+
+
+
+
+  {% endblock %}
