@@ -22,9 +22,9 @@ How would you prefer to be contacted?
     <div class="govuk-form-group">
       {% if data['pref_type'] == "letter" or data['pref_type'] == "email"%}
         {% if  data['pref_type'] == "email" %}
-          <h1 class="govuk-heading-l">Would you like us to send letters to your principal place of business instead of emailing you?</h1>
+          <h1 class="govuk-heading-l">Do you want us to send letters to your principal place of business, instead of emailing you?</h1>
         {% else %}
-          <h1 class="govuk-heading-l">Would you like us to send emails instead of contacting by letter?</h1>
+          <h1 class="govuk-heading-l">Do you want us to send you emails instead of letters?</h1>
         {% endif %}
       {% else %}
         <h1 class="govuk-heading-l">How would you prefer to be contacted?</h1>
@@ -37,11 +37,11 @@ How would you prefer to be contacted?
         {% else %}
           {% if data['contactPref'] == "Letter" or data['pref_type'] == "letter"%}
             <span id="changed-name-hint" class="govuk-hint">
-              You are currently contacted by letter for VAT
+              We currently send messages about your VAT by letter. <br>Select ‘no’ if you prefer to get letters instead.
             </span>
           {% else %}
             <span id="changed-name-hint" class="govuk-hint">
-              You are currently contacted by email for VAT
+              We currently send messages about your VAT by email. <br>Select ‘no’ if you prefer to get emails instead. 
             </span>
           {% endif %}
         {% endif %}
