@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+You have successfully updated your contact details
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% include ".././includes/phase.html" %}
+
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:history.back()"
+}) }}
+
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+<h1 class="govuk-heading-xl">Message detail</h1>
+
+
+      <h2 class="govuk-heading-l">You have successfully updated your contact details</h2>
+
+    <p>
+      <span class="form-hint">
+        This message was sent to you on 03 October 2018
+      </span>
+    </p>
+
+
+   <p>Your new primary email address is
+
+  {{data['emailAddress']}}
+
+
+     </p>
+
+
+
+
+
+
+</div>
+
+</div>
+
+{% endblock %}

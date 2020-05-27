@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Contact preference updated
+{% endblock %}
+
+{% block beforeContent %}
+{% include "./includes/phase.html" %}
+
+
+{% endblock %}
+
+{% block content %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+      {{ govukPanel({
+        titleText: "Contact preference change received for VAT",
+        html: " "
+      }) }}
+
+      <h2 class="govuk-heading-m">What happens next</h2>
+
+        {% if data['pref_type'] == "email" %}
+          <p class="govuk-body">
+            <br>
+            If your contact preference change is accepted, we will contact you about your VAT through sales@abcdigital.com.
+            </p>
+            <p class="govuk-body">
+              In some cases we'll need to send you letters because the law requires it.
+          </p>
+        {% else %}
+        <p class="govuk-body">
+          <br>
+          If your contact preference change is accepted, we will contact you about your VAT at:
+          </p>
+          <p class="govuk-inset-text">
+            30 Romford Road,<br>
+            Madeley,<br>
+            Telford,<br>
+            TF1 4ER.
+          </p>
+          {% endif %}
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+
+      {{ govukButton({
+        text: "View your account details",
+        href: "./account-details",
+        isStartButton: false
+      }) }}
+
+
+    </div>
+  </div>
+{% endblock %}

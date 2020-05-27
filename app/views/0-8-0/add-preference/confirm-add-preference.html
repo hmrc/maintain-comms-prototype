@@ -1,0 +1,118 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check your answers
+{% endblock %}
+
+{% block beforeContent %}
+{% include ".././includes/phase.html" %}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+<form class="form" action="confirmation-email" method="post">
+  <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+
+      <h1 class="govuk-fieldset__heading">
+        Check your answers
+      </h1>
+    </legend>
+
+
+    {{ govukSummaryList({
+            classes: 'govuk-!-margin-bottom-9',
+            rows: [
+              {
+                key: {
+                  text: "Contact preference"
+                },
+                value: {
+                  text: "A new email"
+
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "../choose-preference",
+                      text: "Change",
+                      visuallyHiddenText: "choose tax"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "Email address"
+                },
+                value: {
+                  text: "info@abcdigital.com"
+
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "business-email",
+                      text: "Change",
+                      visuallyHiddenText: "choose tax"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "Taxes"
+                },
+                value: {
+                  text: "VAT"
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "choose-tax",
+
+                      text: "Change",
+                      visuallyHiddenText: "add preference"
+                    }
+                  ]
+                }
+              }
+
+            ]
+          }) }}
+
+
+
+
+
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+
+        {{ govukButton({
+          text: "Confirm and continue"
+        }) }}
+
+
+    </fieldset>
+  </div>
+
+
+
+      </form>
+
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}
