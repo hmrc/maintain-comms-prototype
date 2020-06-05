@@ -109,20 +109,22 @@ module.exports = function (router) {
 
 
        router.get('/' + version + '/account-details', function (req, res) {
-         req.session.company = req.query.company || req.session.company
+         var updated = "false";
+
+         if(req.query.ppobupdated === "updated"){
+           updated = "true";
+         }
+
+        console.log(updated);
+
+          req.session.company = req.query.company || req.session.company;
          res.render(version + '/account-details',{
-                   // 'addressline1': addressline1,
-                   // 'addressline2': addressline2,
-                   // 'addressline3': addressline3,
-                   // 'addressline4': addressline4,
-                   // 'postcode': postcode,
-                   // 'addressline5': addressline5,
                    'indNameUpdating':req.session.indNameUpdating,
                    'bankUpdating':req.session.bankUpdating,
                    'businessAddress':req.session.businessAddress,
                    'vatFreqUpdating':req.session.vatFreqUpdating,
-                   'company':req.session.company
-
+                   'company':req.session.company,
+                   'updated':updated
                     }
            );
        });
