@@ -705,7 +705,7 @@
                       </dd>
                       <dd class="govuk-summary-list__actions">
 
-                        {% if data['ppob'] == "ppob_pending" %}
+                        {% if data['ppob'] == "ppob_pending" or updated == "true" %}
                           <strong>Pending</strong>
                         {% else %}
                         <a href="https://vatvc-prototype.herokuapp.com/4-0-0/chocs/ppob?route=ma">
@@ -747,7 +747,7 @@
                       </dd>
                     </div>
 
-                    {% if data['pref_type'] == "email" %}
+                    {% if data['pref_type'] == "email" and updated == "false"%}
                       {% if data['contactPref'] == "Letter" %}
                         <div class="govuk-summary-list__row">
                           <dt class="govuk-summary-list__key">
@@ -821,10 +821,10 @@
                       </dt>
 
                       <!-- letter -->
-                      {% if data['contactPref'] == "NuLetter" or data['contactPref'] == "Letter" or data['pref_type'] == "letter" %}
+                      {% if data['contactPref'] == "NuLetter" or data['contactPref'] == "Letter" or data['pref_type'] == "letter" or updated == "true"%}
                         <dd class="govuk-summary-list__value">Letter</dd>
                         <dd class="govuk-summary-list__actions">
-                          {% if data['change_pref_to'] == "letter" or data['contactPref'] == "NuLetter" %}
+                          {% if data['change_pref_to'] == "letter" or data['contactPref'] == "NuLetter" or updated == "true" %}
                               <span class="govuk-body govuk-!-font-weight-bold">Pending</span>
                           {% else %}
                               <a href="choose-preference">

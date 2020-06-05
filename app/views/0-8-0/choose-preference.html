@@ -37,11 +37,11 @@ How would you prefer to be contacted?
         {% else %}
           {% if data['contactPref'] == "Letter" or data['pref_type'] == "letter"%}
             <span id="changed-name-hint" class="govuk-hint">
-              We currently send messages about your VAT by letter. <br>Select ‘no’ if you prefer to get letters instead.
+              We currently send messages about your VAT by letter.
             </span>
           {% else %}
             <span id="changed-name-hint" class="govuk-hint">
-              We currently send messages about your VAT by email. <br>Select ‘no’ if you prefer to get emails instead. 
+              We currently send messages about your VAT by email.
             </span>
           {% endif %}
         {% endif %}
@@ -82,22 +82,28 @@ How would you prefer to be contacted?
                 </p>
               </legend>
               <div class="govuk-radios govuk-radios">
+
                 <div class="govuk-radios__item">
                   <input class="govuk-radios__input" id="change1" name="change_pref_to" type="radio" value="letter">
                   <label class="govuk-label govuk-radios__label" for="change1">
                     Yes, send letters to 30 Romford Road, TF1 4ER
                   </label>
                 </div>
+
                 <div class="govuk-radios__item">
                   <input class="govuk-radios__input" id="change2" name="change_pref_to" type="radio" value="no">
                   <label class="govuk-label govuk-radios__label" for="change2">
-                    No
+                    No, I would like to continue to receive emails
                   </label>
                 </div>
+
               </div>
             </fieldset>
-          </div>
 
+          </div>
+<div class="govuk-body govuk-form-group">
+  <a href="https://vatvc-prototype.herokuapp.com/4-0-0/chocs/ppob?route=ma&return=account_details">Change your principal place of business address</a>
+</div>
 
         {% else %}
             <form class="form" action="add-preference/business-email" method="post">
