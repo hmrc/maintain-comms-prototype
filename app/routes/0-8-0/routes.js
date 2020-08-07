@@ -185,4 +185,8 @@ module.exports = function (router) {
           res.redirect('/' + version + '/email' + '/confirmation-preferences');
         });
 
+        router.post('/' + version + '/email' + '/confirmation-email', function (req, res){
+          res.redirect('/' + version + '/email' + '/confirmation-preferences');
+        });
+
 }

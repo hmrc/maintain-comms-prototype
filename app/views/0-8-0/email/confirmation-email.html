@@ -17,40 +17,49 @@
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
+      <form method="post" autocomplete="off">
+          <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                      <h1 class="govuk-fieldset__heading">
+                          Enter code to confirm your email address
+                      </h1>
+                  </legend>
+                  <p>
+                      We have sent a code to: <span class="govuk-!-font-weight-bold">joe.bloggs@example.com.</span>
+                  </p>
+                  <div class="govuk-inset-text">
+                      If you use a browser to access your email, you may need to open a new window or tab to see the
+                      code.
+                  </div>
+                  <div class="govuk-form-group">
+                      <label class="govuk-label govuk-!-font-weight-bold" for="telephone-number">
+                          Confirmation code
+                      </label>
+                      <p class="govuk-hint">For example, DNCLRK</p>
+                      <input class="govuk-input govuk-input--width-10" id="event-name" name="event-name" type="text">
+                  </div>
+          </fieldset></div>
+          
+          <details class="govuk-details" data-module="govuk-details">
+              <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text">
+                      I have not received the email
+                  </span>
+              </summary>
+              <div class="govuk-details__text">
+                  <p>The email may take a few minutes to arrive. Its subject line is: ‘Confirm your email address –
+                      VAT registration’.</p>
+                  <p>Check your spam or junk folder – if it still has not arrived, you can <a href="#">request a new
+                          code</a> or <a href="#">provide another email address</a>.</p>
+              </div>
 
-    <h1 class="govuk-heading-l">
-        Verify your email address
-    </h1>
-            <p>We've sent an email to
-              {% if (emailAddress == null) %}
-                sales@abcdigital.com
-                {% else %}
-                {{data['emailAddress']}}
-                {% endif %}
-              .
-            <p>
-              You need to click the link in our email within 15 minutes. This will confirm you email address
-            </p>
-
-            <p>
-              Check your junk folder. If the email is not there we can <a href="confirmation-email">send it again</a>.
-            </p>
-
-            <p>If you do not confirm your email address within 15 minutes, we will not change your prefered contact method.</p>
-
-
-    </div>
- </div>
-
- <!-- <p style="margin-top:100px"><a href="confirmation-preferences?emailUpdating=true">Skip email verification (for test purposes only)</a></p> -->
-
- {% if (data['contactPref'] == "Letter")  %}
- <p style="margin-top:100px"><a href="../confirmation-update-preference">Skip email verification (for test purposes only)</a></p>
-
- {% else %}
- <p style="margin-top:100px"><a href="confirmation-preferences">Skip email verification (for test purposes only)</a></p>
-
- {% endif %}
-<p><a href="../start">Simulate session timeout (for test purposes only)</a>
+          </details>
+          <button class="govuk-button" data-module="govuk-button">
+              Continue
+          </button>
+      </form>
+  </div>
+</div>
 
 {% endblock %}
