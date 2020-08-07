@@ -181,4 +181,8 @@ module.exports = function (router) {
           res.render(version + '/email/confirmation-preferences');
         });
 
+        router.post('/' + version + '/add-preference' + '/confirmation-email', function (req, res){
+          res.redirect('/' + version + '/email' + '/confirmation-preferences');
+        });
+
 }
