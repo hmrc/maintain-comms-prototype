@@ -19,41 +19,79 @@ Contact preference updated
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-
+      {% if (data['contactPref'] == "letter")  %}
       {{ govukPanel({
-        titleText: "You have asked us to change how we contact you about VAT",
+        titleText: "New contact preference for VAT",
         html: " "
       }) }}
+      {% else %}
+
+      {{ govukPanel({
+        titleText: "Contact preference updated for VAT",
+        html: " "
+      }) }}
+      {% endif %}
+
+      <p class="govuk-body">We have sent you a confirmation email.</p>
 
       <h2 class="govuk-heading-m">What happens next</h2>
 
-        {% if data['pref_type'] == "email" %}
-          <p class="govuk-body">
-            <br>
-              If we can accept the change, we will contact you about VAT at sales@abcdigital.com
-            </p>
-            <p class="govuk-body">
-              We’ll still need to send you some letters in the post because the law tells us to. 
-          </p>
-        {% else %}
+
+
+        <!-- {% if (data['contactPref'] == "Letter")  %}
+
         <p class="govuk-body">
-          <br>
-          If we can accept the change, we will contact you about VAT at:
+          From now on you will receive letters for your VAT to your address;</p>
+            <p>
+              30 Romford Road<br>
+              Wellington<br>
+              TF1 4ER
+
           </p>
-          <p class="govuk-inset-text">
-            30 Romford Road,<br>
-            Madeley,<br>
-            Telford,<br>
-            TF1 4ER.
+
+            {% else %}
+        <p class="govuk-body">
+          From now on we will contact you about your VAT through info@abcdigital.com.
           </p>
-          {% endif %}
+          <p class="govuk-body">
+            In some cases we'll need to send you letters because the law requires it.
+        </p>
+
+        {% endif %} -->
+
+        <p class="govuk-body">
+          From now on we will contact you about your VAT through info@abcdigital.com.
+          </p>
+          <p class="govuk-body">
+            In some cases we'll need to send you letters because the law requires it.
+        </p>
+
+        <h3 class="govuk-heading-s">Direct Debits</h3>
+        <p>If you want to use this email for your direct debit notifications,
+          <a target="_blank" href="https://mtdfb-wip-prototype.herokuapp.com/10/manage_happy/view-direct-debit_vpp">update your direct debit email address (opens in a new window or tab)</a>.</p>
+
 
       {% from "govuk/components/button/macro.njk" import govukButton %}
 
-
+      <!-- {% if (data['contactPref'] == "Letter")  %}
       {{ govukButton({
         text: "View your account details",
         href: "./account-details",
+        isStartButton: false
+      }) }}
+
+      {% else %}
+      {{ govukButton({
+        text: "View your account details",
+        href: "./account-details?contactPref=newEmail",
+        isStartButton: false
+      }) }}
+
+      {% endif %} -->
+
+      {{ govukButton({
+        text: "View your account details",
+        href: "./account-details?contactPref=newEmail",
         isStartButton: false
       }) }}
 
