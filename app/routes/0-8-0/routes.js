@@ -38,7 +38,7 @@ module.exports = function (router) {
        }
        if (req.session.data['email_status'] == "email_needed") {
          //method for no email
-         res.redirect('problem-no-email');
+         res.redirect('email/business-email?tax=vat');
        }
        else {
          req.session.data['temp_pref_type'] = req.body.change_pref_to;
