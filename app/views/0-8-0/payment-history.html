@@ -43,16 +43,19 @@
 }) }}
 
 {% include "./includes/bta-nav.html" %}
-
-<a href="https://vatvc-prototype.herokuapp.com/4-2-0/payment-history2019" class="govuk-back-link">Back</a>
 {% endblock %}
 
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-
-<h1 class="govuk-heading-xl">Payment history</h1>
+  <div class="govuk-width-container">
+    <a href="#" class="govuk-back-link">Back</a>
+  
+    <main class="govuk-main-wrapper">
+  
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h1 class="govuk-heading-xl">Payments made in 2020</h1>
 
 <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
 
@@ -210,41 +213,26 @@
       </div>
     </div>
   </div>
-  <div class="govuk-accordion__section ">
-    <div class="govuk-accordion__section-header">
-      <h2 class="govuk-accordion__section-heading">
-        <span class="govuk-accordion__section-button" id="accordion-default-heading-4">
-          VAT period: 1 July to 30 September 2019<br><span class="govuk-body">Total amount due: £6,700</span>
-        </span>
-      </h2>
-    </div>
-    <div id="accordion-default-content-4" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-4">
-      <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
-        <p>Amount left to pay on this return: £0<br><a href="#">View return submitted on 6 November 2019</a></p>
-          <table class="govuk-table">
-            <thead class="govuk-table__head">
-              <tr class="govuk-table__row">
-                <th scope="col" class="govuk-table__header">Date</th>
-                <th scope="col" class="govuk-table__header">Payment description</th>
-                <th scope="col" class="govuk-table__header govuk-table__cell--numeric govuk-!-font-weight-bold">You paid HMRC</th>
-                <th scope="col" class="govuk-table__header govuk-table__cell--numeric govuk-!-font-weight-bold">HMRC paid you</th>
-              </tr>
-            </thead>
-            <tbody class="govuk-table__body">
-              <tr class="govuk-table__row">
-                <td scope="row" class="govuk-table__cell" valign="top">7 Nov 2019</td>
-                <td class="govuk-table__cell">Return<br><span class="govuk-hint" style="margin:0">for the period 1 July to 30 September 2019</span></td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">£6,700</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">£0</td>
-              </tr>
-              
-            </tbody>
-          </table>
-            <br>
-      </div>
-    </div>
-  </div>
+  
 </div>
+
+        </div>
+  
+        <div class="govuk-grid-column-one-third">
+          <h2 class="govuk-heading-m">Payment history by year</h2>
+          <ul class="govuk-list">
+            <li><a class="govuk-link" aria-current="page" href="#">2020</a></li>
+            <li><a class="govuk-link" href="#">2019</a></li>
+            <li><a class="govuk-link" href="#">2018</a></li>
+            <li><a class="govuk-link" href="#">2017</a></li>
+            </ul>
+        </div>
+      </div>
+  
+    </main>
+  </div>
+
+
 </div>
 </div>
 
