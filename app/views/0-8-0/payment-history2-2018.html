@@ -42,6 +42,11 @@ When was the overclaim made
 }) }}
 
 {% include "./includes/bta-nav.html" %}
+
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:history.back()"
+}) }}
 {% endblock %}
 
 {% block content %}
