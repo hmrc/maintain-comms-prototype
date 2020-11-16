@@ -127,14 +127,14 @@
 
         <p style="margin-bottom: 0">
           {% if (data['emailAddress'] == "unverified")  %}
-          <a href="https://vatvc-prototype.herokuapp.com/3-9-0/your-vat-details?BTAuser=nudge-verify">View your VAT account</a>
+          <a href="https://vatvc-prototype.herokuapp.com/4-3-0/your-vat-details?BTAuser=nudge-verify">View your VAT account</a>
 
           {% elseif (data['emailAddress'] == "unusable")  %}
-          <a href="https://vatvc-prototype.herokuapp.com/3-9-0/your-vat-details?BTAuser=nudge-unusable-email">View your VAT account</a>
+          <a href="https://vatvc-prototype.herokuapp.com/4-3-0/your-vat-details?BTAuser=nudge-unusable-email">View your VAT account</a>
 
 
         {% else %}
-          <a href="https://vatvc-prototype.herokuapp.com/3-9-0/your-vat-details">View your VAT account</a>
+          <a href="https://vatvc-prototype.herokuapp.com/4-3-0/your-vat-details">View your VAT account</a>
           {% endif %}
 
           <!-- {% if (data['emailAddress'] == "unverified")  %}
