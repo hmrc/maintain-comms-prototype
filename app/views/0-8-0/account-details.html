@@ -691,16 +691,9 @@
                       </dt>
                       <dd class="govuk-summary-list__value">
 
-                        {% if (location == "overseas") %}
-                        <span class="form-hint"><i>HMRC address for overseas businesses</i></span>
-                        Ruby House,<br>Aberdeen<br>Aberdeenshire<br>AB10 1ZP
-
-                        {% else %}
-
                         {% if updated == "true" %}10{%else%}30{%endif%} Romford Road<br>
                         Wellington</br>
                         TF1 4ER
-                        {% endif %}
 
                       </dd>
                       <dd class="govuk-summary-list__actions">
@@ -708,7 +701,7 @@
                         {% if data['ppob'] == "ppob_pending" or updated == "true" %}
                           <strong>Pending</strong>
                         {% else %}
-                        <a href="https://vatvc-prototype.herokuapp.com/4-0-0/chocs/ppob?route=ma">
+                        <a href="https://vatvc-prototype.herokuapp.com/4-3-0/chocs/ppobDomesticOverseas">
                           Change <span class="govuk-visually-hidden">principal place of business</span>
                         </a>
                         {% endif %}
