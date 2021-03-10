@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-When was the overclaim made
+Payment history 2020
 {% endblock %}
 
 {% block header %}
@@ -42,10 +42,16 @@ When was the overclaim made
 }) }}
 
 {% include "./includes/bta-nav.html" %}
-{{ govukBackLink({
-  text: "Back",
-  href: "javascript:history.back()"
-}) }}
+<div class="govuk-breadcrumbs">
+  <ol class="govuk-breadcrumbs__list">
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="https://vatvc-prototype.herokuapp.com/4-4-0/your-vat-details">Your VAT account</a>
+    </li>
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="payment-history2020">Payment history 2020</a>
+    </li>
+  </ol>
+</div>
 {% endblock %}
 
 {% block content %}
@@ -140,7 +146,7 @@ When was the overclaim made
               </div>
               <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
             
-                <p class="govuk-body">Total amount due: £5,755<br><a href="#">View return</a></p>
+                <p class="govuk-body">Total amount due: £5,755<br><a href="https://vatvc-prototype.herokuapp.com/4-4-0/your-vat-return-owe">View return</a></p>
                   <table class="govuk-table">
                     <thead class="govuk-table__head">
                       <tr class="govuk-table__row">
@@ -178,7 +184,7 @@ When was the overclaim made
               </div>
               <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
             
-                <p>Total amount due: £6,700<br><a href="#">View return</a></p>
+                <p>Total amount due: £6,700<br><a href="https://vatvc-prototype.herokuapp.com/4-4-0/your-vat-return-owe">View return</a></p>
                   <table class="govuk-table">
                     <thead class="govuk-table__head">
                       <tr class="govuk-table__row">
