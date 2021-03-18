@@ -1,6 +1,6 @@
 module.exports = function (router) {
 
-   var version = "0-9-0";
+   var version = "0-8-0";
 
    router.get('/' + version + '/start', function (req, res) {
      if(req.session.data['pref_type']=="letter"){

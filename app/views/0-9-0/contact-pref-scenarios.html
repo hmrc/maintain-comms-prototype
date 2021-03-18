@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Contact preference scenarios
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-width-container">
+    <main class="govuk-main-wrapper">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">Contact preference scenarios</h1>
+        <form class="form" method="post">
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                <h1 class="govuk-fieldset__heading">
+                  What is the users current contact preference?
+                </h1>
+              </legend>
+              <div class="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="letter" name="pref_type" type="radio" value="letter">
+                  <label class="govuk-label govuk-radios__label" for="letter">
+                    Letter
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="email" name="pref_type" type="radio" value="email">
+                  <label class="govuk-label govuk-radios__label" for="email">
+                    Email
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="govuk-form-group">
+              <button class="govuk-button" data-module="govuk-button">
+                Next
+              </button>
+            </div>
+        </form>
+      </div>
+    </div>
+
+  </main>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+How would you prefer to be contacted?
+{% endblock %}
+
+{% block beforeContent %}
+{% include "./includes/phase.html" %}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <div class="govuk-form-group">
+          <form class="form" method="post">
+            <div class="govuk-form-group">
+
+                <h1 class="govuk-heading-xl">
+                  There is already a change pending
+                </h1>
+
+                <p>We are dealing with a recent request to change something on this VAT account.</p>
+                <p>Until we accept that request, you cannot make a further change.</p>
+                <p>HMRC accepts or rejects changes to VAT accounts within 2 working days.</p>
+
+            </div>
+          </form>
+
+        </div>
+        <a href="account-details">Back to account details</a>
+
+  </div>
+</div>
+
+
+
+
+
+  {% endblock %}

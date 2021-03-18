@@ -1,0 +1,190 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+How would you prefer to be contacted?
+{% endblock %}
+
+{% block beforeContent %}
+{% include "./includes/phase.html" %}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <div class="govuk-form-group">
+      {% if data['pref_type'] == "letter" or data['pref_type'] == "email"%}
+        {% if  data['pref_type'] == "email" %}
+          <h1 class="govuk-heading-l">Do you want us to send letters to your principal place of business, instead of emailing you?</h1>
+        {% else %}
+          <h1 class="govuk-heading-l">Do you want us to send you emails instead of letters?</h1>
+        {% endif %}
+      {% else %}
+        <h1 class="govuk-heading-l">How would you prefer to be contacted?</h1>
+      {% endif %}
+
+        {% if (data['tax'] == "itsa")  %}
+          <span id="changed-name-hint" class="govuk-hint">
+            You are currently contacted by email for Self Assessment at sales@abcdigital.com
+          </span>
+        {% else %}
+          {% if data['contactPref'] == "Letter" or data['pref_type'] == "letter"%}
+            <span id="changed-name-hint" class="govuk-hint">
+              We currently send messages about your VAT by letter.
+            </span>
+          {% else %}
+            <span id="changed-name-hint" class="govuk-hint">
+              We currently send messages about your VAT by email.
+            </span>
+          {% endif %}
+        {% endif %}
+
+        {% if  data['pref_type'] == "letter" %}
+          <form class="form" method="post">
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                  <p class="govuk-fieldset__heading govuk-visually-hidden">
+                    Would you like us to send emails instead?
+                  </p>
+                </legend>
+                <div class="govuk-radios govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="change1" name="change_pref_to" type="radio" value="email">
+                    <label class="govuk-label govuk-radios__label" for="change1">
+                      Yes
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="change2" name="change_pref_to" type="radio" value="no">
+                    <label class="govuk-label govuk-radios__label" for="change2">
+                      No
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+        {% elseif  data['pref_type'] == "email" %}
+        <form class="form" method="post">
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <p class="govuk-fieldset__heading govuk-visually-hidden">
+                  Would you like us to send letter to your principal place of business instead?
+                </p>
+              </legend>
+              <div class="govuk-radios govuk-radios">
+
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="change1" name="change_pref_to" type="radio" value="letter">
+                  <label class="govuk-label govuk-radios__label" for="change1">
+                    Yes, send letters to 30 Romford Road, TF1 4ER
+                  </label>
+                </div>
+
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="change2" name="change_pref_to" type="radio" value="no">
+                  <label class="govuk-label govuk-radios__label" for="change2">
+                    No, I would like to continue to receive emails
+                  </label>
+                </div>
+
+              </div>
+            </fieldset>
+
+          </div>
+
+
+        {% else %}
+            <form class="form" action="add-preference/business-email" method="post">
+              <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l visulally-hidden">
+                    <p class="govuk-fieldset__heading">How would you prefer to be contacted?
+                    </p>
+                  </legend>
+                <p></p>
+                <div class="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="contactPref" name="contactPref" type="radio" value="Email address">
+                    <label class="govuk-label govuk-radios__label" for="sign-in">
+                      Email address
+                    </label>
+                    <span id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                      accounts@abcdigital.com
+                    </span>
+                  </div>
+                  {% if (data['contactPref'] == "Letter")  %}
+
+                  {% else %}
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="contactPref" name="contactPref" type="radio" value="Letter">
+                      <label class="govuk-label govuk-radios__label" for="sign-in">
+                        Letter
+                      </label>
+                      <span id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                        30 Romford Road TF1 4ER
+                      </span>
+                    </div>
+                  {% endif %}
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="contactPref-2" name="contactPref" type="radio" value="new email">
+                    <label class="govuk-label govuk-radios__label" for="sign-in">
+                      A new email address
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="contactPref-3" name="contactPref" type="radio" value="Landline number">
+                    <label class="govuk-label govuk-radios__label" for="sign-in">
+                      Landline number
+                    </label>
+                    <span id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                      0121 445 5555
+                    </span>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="contactPref-4" name="contactPref" type="radio" value="Mobile number">
+                    <label class="govuk-label govuk-radios__label" for="sign-in">
+                      Mobile number
+                    </label>
+                    <span id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                      07700 900457
+                    </span>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="contactPref-5" name="contactPref" type="radio" value="SMS">
+                    <label class="govuk-label govuk-radios__label" for="SMS">
+                      SMS
+                    </label>
+                    <span id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                      07700 900457
+                    </span>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+        {% endif %}
+
+        </div>
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+    </form>
+  </div>
+</div>
+
+
+
+
+
+  {% endblock %}

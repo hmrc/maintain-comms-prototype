@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+What is the email address
+{% endblock %}
+
+{% block beforeContent %}
+{% include "./includes/phase.html" %}
+
+{{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="confirmation-email" method="post">
+      <div class="govuk-form-group">
+        <h1 class="govuk-heading-l">
+          What email address would you like us to use?
+        </h1>
+
+        <span id="email-hint" class="govuk-hint">
+          We will use this to send you updates about your VAT account.
+        </span>
+        <input value="info@abcdigital.com" class="govuk-input govuk-!-width-one-half" id="emailAddress" name="emailAddress" type="emailAddress" aria-describedby="email-hint" autocomplete="email" spellcheck="false">
+      </div>
+
+
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {{ govukButton({
+          text: "Continue"
+        }) }}
+
+
+      <p id="email-hint">
+
+          Full details of how we use your information are in the <a target="_blank"
+            href="https://www.gov.uk/government/publications/data-protection-act-dpa-information-hm-revenue-and-customs-hold-about-you/data-protection-act-dpa-information-hm-revenue-and-customs-hold-about-you">HMRC Privacy Notice (opens in a new window or tab)</a>.
+      </p>
+
+    </form>
+  </div>
+</div>
+
+
+
+
+
+{% endblock %}
